@@ -9,7 +9,8 @@ import { ConectarComponent } from './views/conectar/conectar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthInstagramComponent } from './views/auth-instagram/auth-instagram.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     HomeComponent,
     RegistrarComponent,
     ConectarComponent,
-    DashboardComponent
+    DashboardComponent,
+    AuthInstagramComponent
   ],
   imports: [
     BrowserModule,

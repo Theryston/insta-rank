@@ -14,6 +14,11 @@ export class AppComponent implements OnInit {
       window.location.href = '/'
     } else if (localStorage.getItem('token_login') && window.location.pathname != '/dashboard') {
       this.router.navigate(['/dashboard'])
+    } if (window.location.pathname == '/dashboard') {
+      var user: any = localStorage.getItem('user')
+      if (!JSON.parse(user).instagram_token) {
+        window.location.href = 'https://www.instagram.com/oauth/authorize?client_id=260917165732736&redirect_uri=https://instarank.prsacademy.com.br/auth&response_type=code&scope=user_profile,user_media'
+      }
     }
   }
 }

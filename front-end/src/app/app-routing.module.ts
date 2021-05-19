@@ -1,3 +1,4 @@
+import { AuthInstagramComponent } from './views/auth-instagram/auth-instagram.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConectarComponent } from './views/conectar/conectar.component';
@@ -17,6 +18,9 @@ const routes: Routes = [{
 }, {
   path: 'dashboard',
   component: DashboardComponent
+}, {
+  path: 'auth',
+  component: AuthInstagramComponent
 }];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -33,6 +33,13 @@ export class UserService {
 
   register(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(this.baseUrl + '/user', user).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
+  update(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(this.baseUrl + '/user/'+user.id, JSON.stringify(user), { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )
