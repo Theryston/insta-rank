@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.container .logo {
+    width: 100px;
+    margin-top: 50px;
+}
+
+.container .title {
+    margin-top: 50px;
+    font-size: var(--e-global-typography-73cdbfe-font-size);
+}
+
+
+.container .description {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    font-family: var(--e-global-typography-primary-font-weight);
+}

@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --e-global-color-primary: #6ec1e4;
+    --e-global-color-secondary: #54595f;
+    --e-global-color-text: #7a7a7a;
+    --e-global-color-accent: #61ce70;
+    --e-global-typography-primary-font-family: "Arial";
+    --e-global-typography-primary-font-weight: 600;
+    --e-global-typography-secondary-font-family: "Arial";
+    --e-global-typography-secondary-font-weight: 400;
+    --e-global-typography-text-font-family: "Arial";
+    --e-global-typography-text-font-weight: 400;
+    --e-global-typography-accent-font-family: "Arial";
+    --e-global-typography-accent-font-weight: 500;
+    --e-global-typography-73cdbfe-font-family: "Arial";
+    --e-global-typography-73cdbfe-font-size: 62px;
+    --e-global-typography-73cdbfe-line-height: 2.9em;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--e-global-typography-primary-font-family);
+    color: var(--e-global-color-text);
+    background: #FAFAFB;
+}
+
+.button-basic {
+    font-family: var(--e-global-typography-primary-font-family);
+    background: var(--e-global-color-primary);
+    font-size: 1.2rem;
+    font-weight: var(--e-global-typography-primary-font-weight);
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 50px;
+    box-shadow: 0px 0px 15px var(--e-global-color-primary);
+    padding: 10px;
+}
+
+.button-basic:hover {
+    background: var(--e-global-color-secondary);
+    box-shadow: 0px 0px 15px var(--e-global-color-secondary);
+}
+
+.input-basic {
+    width: 80%;
+    border: 1px var(--e-global-color-secondary) solid;
+    outline: none;
+    height: 50px;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    position: relative;
+}
+
+.input-basic input {
+    border: none;
+    outline: none;
+    width: 95%;
+    height: 40px;
+}
+
+.input-basic p {
+    background: #FFF;
+    padding: 5px;
+    position: absolute;
+    top: -30%;
+    font-weight: 300;
+    left:  10px;
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--e-global-color-accent);
+}

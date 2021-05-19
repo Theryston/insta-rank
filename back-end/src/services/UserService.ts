@@ -33,6 +33,10 @@ class UserService {
         return user;
     }
 
+    async readById(id: number) {
+        return await User.findOne({ where: { id } })
+    }
+
     async destroy(id: number) {
         await User.destroy({ where: { id } })
     }
@@ -46,7 +50,8 @@ class UserService {
 
         if (correctPassword) {
             const token = await jwtSign({ userId: user.id }, jwtSecret)
-            return token
+            user.password = undefined
+            return { token, user }
         }
 
         throw new Error('Senha incorreta!')

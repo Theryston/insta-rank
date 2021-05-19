@@ -36,14 +36,28 @@ export class UserController {
   async auth(req: Request, res: Response) {
     try {
       const userService = new UserService()
-      const token = await userService.auth(req.body)
+      const datas = await userService.auth(req.body)
 
-      res.status(201).json({
-        token
+      res.status(200).json(datas)
+    } catch (err) {
+      res.status(400)
+      res.json({
+        message: err.message
+      })
+    }
+  }
+  
+  async readById(req: Request, res: Response) {
+    try {
+      const userService = new UserService()
+      const user = await userService.readById(Number(req.params.id));
+  
+      res.status(200).json({
+        user
       })
     } catch (err) {
       console.log(err)
-      res.status(401)
+      res.status(400)
       res.json({
         message: err.message
       })

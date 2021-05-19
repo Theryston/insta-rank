@@ -1,0 +1,14 @@
+<div class="container">
+    <form (submit)="submit()">
+        <div class="input-basic">
+            <input required placeholder="Digite aqui o  seu email" type="text" name="email" [(ngModel)]="user.email">
+            <p>E-mail</p>
+        </div>
+        <div class="input-basic">
+            <p>Senha</p>
+            <input required placeholder="Digite uma  senha para acessar a ferramenta" type="password" name="password" [(ngModel)]="user.password">
+        </div>
+        <button class="button-basic" type="submit">Conectar</button>
+    </form>
+    <p>ainda não tenho uma conta quero fazer o meu <a routerLink="/registrar">registro</a></p>
+</div>
