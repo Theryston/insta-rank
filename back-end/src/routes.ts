@@ -7,7 +7,7 @@ const userMiddleware = new UserMiddleware()
 
 routes.post('/api/v1/user', userController.register)
 routes.get('/api/v1/user/:id', userMiddleware.auth, userController.readById)
-routes.patch('/api/v1/user/update/:id', userMiddleware.auth, userController.update)
+routes.patch('/api/v1/user/:id', userMiddleware.auth, userController.update)
 routes.delete('/api/v1/user/:id', userMiddleware.auth, userController.delete)
 routes.post('/api/v1/user/auth', userController.auth)
 

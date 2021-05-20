@@ -19,7 +19,7 @@ interface IUser {
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://localhost:3000/api/v1'
+  baseUrl = 'https://3000-maroon-turkey-xsybm1cb.ws-us04.gitpod.io/api/v1'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   update(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(this.baseUrl + '/user/'+user.id, JSON.stringify(user), { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
+    return this.http.patch<IUser>(this.baseUrl + '/user/'+user.id, user, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )

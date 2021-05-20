@@ -60,7 +60,6 @@ class UserService {
     async update(user: IUser) {
         user.id = undefined
         user.buy = undefined
-        user.instagram_token = undefined
 
         if (user.password) {
             user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10))

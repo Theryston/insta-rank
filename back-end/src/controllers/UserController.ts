@@ -67,9 +67,10 @@ export class UserController {
   async update(req: Request, res: Response) {
     try {
       const userService = new UserService()
-      await userService.update(req.body)
+      var user = req.body
+      await userService.update(user)
 
-      res.sendStatus(200)
+      res.status(200).json({ message: "Usuário atualizado!" })
     } catch (err) {
       console.log(err)
       res.status(500)
