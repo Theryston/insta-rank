@@ -11,6 +11,7 @@ interface IUser {
     email: string;
     password: string;
     instagram_token?: string;
+    instagram_id?: string;
     buy: boolean | undefined;
     id?: number;
     created_at?: Date;

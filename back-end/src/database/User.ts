@@ -18,6 +18,10 @@ const User = connection.define('users', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    instagram_id: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     buy: {
         type: Sequelize.BOOLEAN,
         defaultValue: false

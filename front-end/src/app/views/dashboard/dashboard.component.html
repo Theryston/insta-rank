@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<div class="container">
+    <header>
+        <img src="assets/img/logo.png" alt="instagram" class="logo">
+        <div class="user">
+            <p class="title">@username</p>
+            <p class="description">25 publicações</p>
+        </div>
+    </header>
+    <select (change)="submit()" [(ngModel)]="orderBy">
+        <option value="likes">Curtidas</option>
+        <option value="comments">Comentários</option>
+        <option value="date">Data</option>
+    </select>
+    <section>
+        <a href="http://instagram.com">
+            <div class="box">
+                <img src="https://api.allorigins.win/raw?url=https%3A%2F%2Finstagram.fvdc1-1.fna.fbcdn.net%2Fv%2Ft51.2885-15%2Fe35%2Fc0.396.720.720a%2Fs240x240%2F178210973_496836355011923_8628880239352816170_n.jpg%3Ftp%3D1%26_nc_ht%3Dinstagram.fvdc1-1.fna.fbcdn.net%26_nc_cat%3D111%26_nc_ohc%3DkfnRF_DiryoAX8RfHcH%26edm%3DAPU89FABAAAA%26ccb%3D7-4%26oh%3D80fb0d9ee1f9904a3a23665cff9b7ce5%26oe%3D60A79C33%26_nc_sid%3D86f79a" alt="">
+                <div class="data">
+                    <img src="https://image.flaticon.com/icons/png/512/833/833472.png" alt="likes" class="icon">
+                    <p>25</p>
+                    <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários" class="icon">
+                    <p>8</p>
+                </div>            
+            </div>
+        </a>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </section>
+</div>

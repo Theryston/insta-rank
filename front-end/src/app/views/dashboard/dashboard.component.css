@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.container header {
+    width: 80%;
+    border: 1px var(--e-global-color-text) solid;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container header .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.container header .title {
+    margin: 0;
+    color: black;
+}
+
+.container header .logo {
+    height: 90%;
+}
+
+.container header .user .description {
+    margin-left: 10px;
+}
+
+.container select {
+    width: 80%;
+    border: 1px var(--e-global-color-text) solid;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.container section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px;
+    outline: none;
+}
+
+
+.container section .box {
+    width: 250px;
+    height: 300px;
+    background: #FFF;
+    margin: 25px;
+    border-radius: 10px;
+    border: 1px var(--e-global-color-text) solid;
+    justify-content: flex-start;
+}
+
+.container section .box:hover {
+    background: #EEE;
+}
+
+.container section .box img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.container section .box .data {
+    width: 100%;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container section .box .data .icon{
+    width: 1.5rem;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 0px;
+}
+
+.container section .box .data p {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+}
