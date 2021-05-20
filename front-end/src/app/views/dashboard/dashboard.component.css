@@ -12,32 +12,64 @@
     border: 1px var(--e-global-color-text) solid;
     display: flex;
     flex-direction: row;
-    height: 50px;
+    min-height: 50px;
     align-items: center;
+    flex-wrap: wrap;
     padding: 10px;
     border-radius: 10px;
 }
 
 .container header .user {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
+    flex-direction: row;
+    margin-left: 20px;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
 }
 
-.container header .title {
-    margin: 0;
-    color: black;
+.button-basic {
+    margin: 10px;
 }
 
 .container header .logo {
-    height: 90%;
+    height: 70px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .container header .user .description {
     margin-left: 10px;
+}
+
+.container .select {
+    margin: 20px;
+    width: 80%;
+    border: 1px var(--e-global-color-secondary) solid;
+    outline: none;
+    height: 50px;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    position: relative;
+}
+
+.container .select select {
+    border: none;
+    outline: none;
+    width: 95%;
+    height: 40px;
+}
+
+.container .select p {
+    background: #FFF;
+    padding: 5px;
+    position: absolute;
+    top: -30%;
+    font-weight: 300;
+    left:  10px;
 }
 
 .container select {

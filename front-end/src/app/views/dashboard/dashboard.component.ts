@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 
 interface IPost {
@@ -26,20 +27,32 @@ interface IUser {
 })
 export class DashboardComponent implements OnInit {
   orderBy: string;
+  username: string;
+  profile_pic_url: string;
 
-  constructor() { 
+  constructor(private snackBar: MatSnackBar) { 
     this.orderBy = 'likes'
+    this.username = ''
+    this.profile_pic_url = 'assets/img/logo.png'
   }
 
   ngOnInit(): void {
-    const user: any = localStorage.getItem('user')
-    if (!user) {
-      window.location.href = 'https://www.instagram.com/oauth/authorize?client_id=260917165732736&redirect_uri=https://4200-maroon-turkey-xsybm1cb.ws-us04.gitpod.io/auth&response_type=code&scope=user_profile,user_media'
-    }
+  }
+
+  showMessage(msg: string): void {
+    this.snackBar.open(msg, "", {
+      duration: 3000,
+      horizontalPosition: "right",
+      verticalPosition: "top"
+    });
   }
 
   submit(): void {
-    alert(this.orderBy)
+    if (this.username == '') {
+      this.showMessage('Insira um usuário do instagram')
+    } else {
+
+    }
   }
 
 }
