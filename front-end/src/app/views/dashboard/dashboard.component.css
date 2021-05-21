@@ -7,6 +7,23 @@
     text-align: center;
 }
 
+a:link {
+    color:#333;
+    text-decoration:none;
+  }
+  a:visited {
+    color:#333;
+    text-decoration:none;
+  }
+  a:hover {
+    color:#333;
+    text-decoration: none;
+  }
+  a:active {
+    color:#333;
+    text-decoration: none;
+  }
+
 .container header {
     width: 80%;
     border: 1px var(--e-global-color-text) solid;
@@ -63,6 +80,7 @@
     outline: none;
     width: 95%;
     height: 40px;
+    margin: 0px;
 }
 
 .container .select p {
@@ -129,6 +147,15 @@
     margin-bottom: auto;
     margin-left: 10px;
     border-radius: 0px;
+}
+
+.container section .box .date {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left:  10px;
+    color: var(--e-global-color-text);
+    font-weight: 600;
 }
 
 .container section .box .data p {

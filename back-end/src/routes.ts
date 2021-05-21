@@ -7,6 +7,9 @@ const userController = new UserController();
 const userMiddleware = new UserMiddleware()
 const instagramController = new InstagramController();
 
+routes.get('/', (req, res) => {
+    res.send('ok')
+})
 routes.post('/api/v1/user', userController.register)
 routes.get('/api/v1/user/:id', userMiddleware.auth, userController.readById)
 routes.patch('/api/v1/user/:id', userMiddleware.auth, userController.update)

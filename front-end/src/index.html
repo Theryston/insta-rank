@@ -34,7 +34,7 @@
               fetch('https://graph.facebook.com/v10.0/me/accounts?access_token='+res.authResponse.accessToken).then(async (accounts) => {
                 accounts = await accounts.json()
                 const pageId = accounts.data[0].id
-                fetch('https://graph.facebook.com/v10.0/104772115139269?fields=instagram_business_account&access_token=EAAgkDSE6QiwBALvXU8N4DzZAa6xGSnieIdMVQXugcO1NZB6bB9LvZBpRBKLMTHSZAHuEa9UWGGY4ExioARAeS0SlW8LcCmunG1NToVlzme28EMZA6nmxsibW2Owfve4OMzZCsYj9xBZAK3bM46oealehrqYOhfZBAe4XzE64VQPUWc65ZCjepjoPWLUyJRZAe9zSjt147aXjfONdD3ASOXysOU4wpe0YRxYdEZDhttps://graph.facebook.com/v10.0/'+pageId+'?fields=instagram_business_account&access_token='+res.authResponse.accessToken).then(async (businessAccount) => {
+                fetch('https://graph.facebook.com/v10.0/'+pageId+'?fields=instagram_business_account&access_token='+res.authResponse.accessToken).then(async (businessAccount) => {
                   businessAccount = await businessAccount.json()
                   res.authResponse.userID = businessAccount.instagram_business_account.id
                   localStorage.setItem('instagram', JSON.stringify(res.authResponse))

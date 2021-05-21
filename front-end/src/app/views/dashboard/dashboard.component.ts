@@ -4,10 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios'
 
 interface IPost {
-  url: string;
-  cover_url: string;
-  likes: number;
-  comments: number;
+  like_count: number;
+  comments_count: number;
+  media_url: string;
+  permalink: string;
+  timestamp: Date;
+  id: string;
 }
 
 interface IUser {
@@ -31,18 +33,23 @@ export class DashboardComponent implements OnInit {
   orderBy: string;
   username: string;
   profile_pic_url: string;
+  posts: IPost[];
 
   constructor(private snackBar: MatSnackBar, private instagramService: InstagramService) {
+    this.posts = [{
+      like_count: 999,
+      comments_count: 999,
+      media_url: 'assets/img/logo.png',
+      permalink: 'http://instagram.com',
+      timestamp: new Date(),
+      id: '9828'
+    }];
     this.username = ''
     this.orderBy = 'likes'
     this.profile_pic_url = 'assets/img/logo.png'
-    const instagram: any = localStorage.getItem('instagram')
-    axios.get('https://graph.facebook.com/v3.2/' + JSON.parse(instagram).userID + '?fields=profile_picture_url,username&access_token=' + JSON.parse(instagram).accessToken).then(async (user: any) => {
-      user = user.data
-      this.username = '@' + user.username
-      this.profile_pic_url = user.profile_picture_url
+    setTimeout(() => {
       this.submit()
-    })
+    }, 5000)
   }
 
   ngOnInit(): void {
@@ -57,17 +64,26 @@ export class DashboardComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.username == '') {
-      this.showMessage('Insira um usuário do instagram')
-    } else {
-      const instagram: any = localStorage.getItem('instagram')
-      this.instagramService.orderBy({
-        instagram: JSON.parse(instagram),
-        orderBy: this.orderBy
-      }).subscribe(async (res) => {
-        console.log(res)
-      })
-    }
+    var instagram: any = localStorage.getItem('instagram')
+    var instagramJson = JSON.parse(instagram)
+    this.showMessage('Só um momento!')
+
+    axios.get('https://graph.facebook.com/v10.0/' + instagramJson.userID + '?fields=profile_picture_url,username&access_token=' + instagramJson.accessToken).then(async (user: any) => {
+      user = user.data
+      this.username = '@' + user.username
+      this.profile_pic_url = user.profile_picture_url
+
+      if (this.username == '') {
+        this.showMessage('Insira um usuário do instagram')
+      } else {
+        this.instagramService.orderBy({
+          instagram: JSON.parse(instagram),
+          orderBy: this.orderBy
+        }).subscribe(async (res) => {
+          this.posts = res
+        })
+      }
+    })
   }
 
 }

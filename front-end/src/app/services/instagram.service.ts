@@ -9,7 +9,7 @@ import axios from "axios";
   providedIn: 'root'
 })
 export class InstagramService {
-  baseUrl = 'https://3000-maroon-turkey-xsybm1cb.ws-us04.gitpod.io/api/v1'
+  baseUrl = 'https://3000-maroon-turkey-xsybm1cb.ws-us07.gitpod.io/api/v1'
   insta_base_url = 'https://graph.facebook.com'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
