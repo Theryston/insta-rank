@@ -1,3 +1,4 @@
+import { PlanosComponent } from './views/planos/planos.component';
 import { AuthInstagramComponent } from './views/auth-instagram/auth-instagram.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,6 +22,9 @@ const routes: Routes = [{
 }, {
   path: 'auth',
   component: AuthInstagramComponent
+} ,{ 
+  path: 'planos',
+  component: PlanosComponent
 }];
 
 @NgModule({

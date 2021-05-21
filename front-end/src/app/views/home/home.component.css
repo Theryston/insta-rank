@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -22,5 +22,6 @@
     margin-top: 50px;
     margin-bottom: 50px;
     font-size: 1.5rem;
+    line-height: 2rem;
     font-family: var(--e-global-typography-primary-font-weight);
 }

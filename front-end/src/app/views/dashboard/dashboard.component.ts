@@ -44,12 +44,12 @@ export class DashboardComponent implements OnInit {
       timestamp: new Date(),
       id: '9828'
     }];
-    this.username = ''
     this.orderBy = 'likes'
-    this.profile_pic_url = 'assets/img/logo.png'
+    this.username = 'Verificando @...'
+    this.profile_pic_url = 'assets/img/account.png'
     setTimeout(() => {
       this.submit()
-    }, 5000)
+    }, 1000)
   }
 
   ngOnInit(): void {

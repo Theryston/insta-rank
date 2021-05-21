@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -20,7 +21,7 @@ interface IUser {
 export class RegistrarComponent implements OnInit {
   user: IUser
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.user = {
       name: "",
       email: "",
@@ -34,7 +35,7 @@ export class RegistrarComponent implements OnInit {
   submit(): void {
     this.userService.register(this.user).subscribe(() => {
       this.userService.showMessage("Usuário criado com sucesso!")
-      window.location.href = 'https://sun.eduzz.com/861320'
+      this.router.navigate(['/planos'])
     })
   }
 
