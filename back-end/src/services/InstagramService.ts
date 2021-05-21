@@ -14,7 +14,6 @@ export class InstagramService {
 
     async orderBy({ orderBy, instagram, id }: IOrder) {
         const user: any = await User.findOne({ where: { id } })
-        user.buy = true;
         if (!user.buy) {
             throw new Error('Faça o pagamento para usar a ferramenta')
         } else {

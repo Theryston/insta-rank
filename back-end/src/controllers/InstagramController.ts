@@ -13,8 +13,7 @@ export class InstagramController {
 
             res.status(200).json(datas)
         } catch (err) {
-            console.log(err)
-            res.status(500).json({ err: err.message })
+            res.status(500).json({ message: err.message })
         }
     }
 }

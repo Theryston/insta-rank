@@ -31,9 +31,15 @@ export class InstagramService {
   }
 
   errorHandler(e: any): Observable<any> {
-    // localStorage.removeItem('instagram')
-    this.showMessage(e.message)
-    // window.location.href = '/'
+    if (e.error.message != 'Faça o pagamento para usar a ferramenta') {
+      localStorage.removeItem('instagram')
+      window.location.href = '/'
+    } else {
+      this.showMessage(e.error.message + ' | redirecionando para a tela de pagamento');
+      setTimeout(() => {
+        window.location.href = 'https://sun.eduzz.com/861320'
+      }, 3000)
+    }
     return EMPTY;
   }
 

@@ -34,6 +34,7 @@ export class RegistrarComponent implements OnInit {
   submit(): void {
     this.userService.register(this.user).subscribe(() => {
       this.userService.showMessage("Usuário criado com sucesso!")
+      window.location.href = 'https://sun.eduzz.com/861320'
     })
   }
 

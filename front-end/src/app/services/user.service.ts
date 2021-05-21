@@ -54,8 +54,7 @@ export class UserService {
   }
 
   errorHandler(e: any): Observable<any> {
-    console.log(e)
-    this.showMessage(e.message);
+    this.showMessage(e.error.message);
     return EMPTY;
   }
 
