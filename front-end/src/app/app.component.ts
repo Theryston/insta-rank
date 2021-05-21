@@ -12,9 +12,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (window.location.pathname == '/dashboard' && localStorage.getItem('token_login') == null) {
       window.location.href = '/'
+    } else if (localStorage.getItem('token_login') && window.location.pathname != '/dashboard') {
+      window.location.href = '/dashboard'
     }
-    // } else if (localStorage.getItem('token_login') && window.location.pathname != '/dashboard') {
-    //   window.location.href = '/dashboard'
-    // }
   }
 }

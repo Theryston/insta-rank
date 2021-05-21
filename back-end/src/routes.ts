@@ -13,6 +13,6 @@ routes.patch('/api/v1/user/:id', userMiddleware.auth, userController.update)
 routes.delete('/api/v1/user/:id', userMiddleware.auth, userController.delete)
 routes.post('/api/v1/user/auth', userController.auth)
 
-routes.get('/api/v1/order/:id', userMiddleware.auth, instagramController.orderBy)
+routes.post('/api/v1/order/:id', userMiddleware.auth, instagramController.orderBy)
 
 export { routes }

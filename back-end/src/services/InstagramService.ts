@@ -4,22 +4,21 @@ import { JSDOM } from "jsdom"
 import Crawler from 'crawler'
 
 interface IOrder {
-    userId: number;
+    id: number;
     orderBy: string;
-    username: string;
+    instagram: string;
 }
 
 export class InstagramService {
     constructor() { }
 
-    async orderBy({ orderBy, username, userId }: IOrder) {
-        const user: any = await User.findOne({ where: { id: userId } })
+    async orderBy({ orderBy, instagram, id }: IOrder) {
+        const user: any = await User.findOne({ where: { id } })
         user.buy = true;
         if (!user.buy) {
             throw new Error('Faça o pagamento para usar a ferramenta')
         } else {
-
-            return 'ok'
+            return { orderBy, instagram, id}
         }
     }
 }

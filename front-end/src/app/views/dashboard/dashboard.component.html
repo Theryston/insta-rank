@@ -4,7 +4,7 @@
         <img [src]="profile_pic_url" alt="instagram" class="logo">
         <div class="user">
             <div class="input-basic">
-                <input type="text" placeholder="Digite o @ que você quer ordenar!" [(ngModel)]="username" name="username">
+                <input disabled type="text" placeholder="Digite o seu @ do instagram" [(ngModel)]="username" name="username">
             </div>
             <button (click)="submit()" class="button-basic">Ordenar</button>
         </div>

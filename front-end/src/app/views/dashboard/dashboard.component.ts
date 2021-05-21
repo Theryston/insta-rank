@@ -1,3 +1,4 @@
+import { InstagramService } from './../../services/instagram.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios'
@@ -31,10 +32,17 @@ export class DashboardComponent implements OnInit {
   username: string;
   profile_pic_url: string;
 
-  constructor(private snackBar: MatSnackBar) { 
-    this.orderBy = 'likes'
+  constructor(private snackBar: MatSnackBar, private instagramService: InstagramService) {
     this.username = ''
+    this.orderBy = 'likes'
     this.profile_pic_url = 'assets/img/logo.png'
+    const instagram: any = localStorage.getItem('instagram')
+    axios.get('https://graph.facebook.com/v3.2/' + JSON.parse(instagram).userID + '?fields=profile_picture_url,username&access_token=' + JSON.parse(instagram).accessToken).then(async (user: any) => {
+      user = user.data
+      this.username = '@' + user.username
+      this.profile_pic_url = user.profile_picture_url
+      this.submit()
+    })
   }
 
   ngOnInit(): void {
@@ -52,7 +60,13 @@ export class DashboardComponent implements OnInit {
     if (this.username == '') {
       this.showMessage('Insira um usuário do instagram')
     } else {
-      
+      const instagram: any = localStorage.getItem('instagram')
+      this.instagramService.orderBy({
+        instagram: JSON.parse(instagram),
+        orderBy: this.orderBy
+      }).subscribe(async (res) => {
+        console.log(res)
+      })
     }
   }
 

@@ -4,12 +4,12 @@ export class InstagramController {
     constructor() { }
 
     async orderBy(req: Request, res: Response) {
-        const orderBy: any = req.query.orderBy
         const id = req.params.id
-        const username: any = req.query.username
+        const orderBy: any = req.query.orderBy
+        const instagram: any = req.body.instagram
         try {
             const instagramService = new InstagramService()
-            const datas = await instagramService.orderBy({ userId: Number(id), orderBy, username })
+            const datas = await instagramService.orderBy({ id: Number(id), orderBy, instagram })
 
             res.status(200).json(datas)
         } catch (err) {

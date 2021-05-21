@@ -13,6 +13,40 @@
 </head>
 
 <body class="mat-typography">
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '2291438624326188',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v10.0'
+      });
+    }
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script>
+    setTimeout(() => {
+      if (window.location.pathname == '/dashboard' && localStorage.getItem('instagram') == null) {
+        FB.getLoginStatus(function (response) {
+          if (response.status) {
+            FB.login(function (res) {
+
+              fetch('https://graph.facebook.com/v10.0/me/accounts?access_token='+res.authResponse.accessToken).then(async (accounts) => {
+                accounts = await accounts.json()
+                const pageId = accounts.data[0].id
+                fetch('https://graph.facebook.com/v10.0/104772115139269?fields=instagram_business_account&access_token=EAAgkDSE6QiwBALvXU8N4DzZAa6xGSnieIdMVQXugcO1NZB6bB9LvZBpRBKLMTHSZAHuEa9UWGGY4ExioARAeS0SlW8LcCmunG1NToVlzme28EMZA6nmxsibW2Owfve4OMzZCsYj9xBZAK3bM46oealehrqYOhfZBAe4XzE64VQPUWc65ZCjepjoPWLUyJRZAe9zSjt147aXjfONdD3ASOXysOU4wpe0YRxYdEZDhttps://graph.facebook.com/v10.0/'+pageId+'?fields=instagram_business_account&access_token='+res.authResponse.accessToken).then(async (businessAccount) => {
+                  businessAccount = await businessAccount.json()
+                  res.authResponse.userID = businessAccount.instagram_business_account.id
+                  localStorage.setItem('instagram', JSON.stringify(res.authResponse))
+                })
+              })
+
+            }, { scope: 'instagram_basic,pages_read_engagement' });
+          }
+        });
+      }
+    }, 2000);
+  </script>
   <app-root></app-root>
 </body>
 

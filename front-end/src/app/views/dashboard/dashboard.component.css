@@ -36,6 +36,7 @@
     height: 70px;
     margin-left: 20px;
     margin-bottom: 20px;
+    border-radius: 100%;
 }
 
 .container header .user .description {
