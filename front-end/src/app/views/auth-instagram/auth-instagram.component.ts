@@ -34,11 +34,11 @@ export class AuthInstagramComponent implements OnInit {
         console.log(res)
         user.instagram_token = res.data.access_token
         user.instagram_id = res.data.user_id
-        this.userService.update(user).subscribe(() => {
-          localStorage.removeItem('user')
-          localStorage.setItem('user', JSON.stringify(user));
-          window.location.href = '/';
-        })
+        // this.userService.update(user).subscribe(() => {
+        //   localStorage.removeItem('user')
+        //   localStorage.setItem('user', JSON.stringify(user));
+        //   window.location.href = '/';
+        // })
       } catch (err) {
         console.log('>>>>>', err)
       }

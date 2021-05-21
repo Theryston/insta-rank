@@ -1,5 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios'
 
 interface IPost {
   url: string;
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
     if (this.username == '') {
       this.showMessage('Insira um usuário do instagram')
     } else {
-
+      
     }
   }
 
