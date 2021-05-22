@@ -39,17 +39,17 @@ export class DashboardComponent implements OnInit {
     this.posts = [{
       like_count: 999,
       comments_count: 999,
-      media_url: 'assets/img/logo.png',
+      media_url: 'assets/img//logo.png',
       permalink: 'http://instagram.com',
       timestamp: new Date(),
       id: '9828'
     }];
     this.orderBy = 'likes'
-    this.username = 'Verificando @...'
+    this.username = ''
     this.profile_pic_url = 'assets/img/account.png'
     setTimeout(() => {
       this.submit()
-    }, 1000)
+    }, 3000)
   }
 
   ngOnInit(): void {

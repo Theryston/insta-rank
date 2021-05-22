@@ -28,7 +28,8 @@
     setTimeout(() => {
       if (window.location.pathname == '/dashboard' && localStorage.getItem('instagram') == null) {
         FB.getLoginStatus(function (response) {
-          if (response.status) {
+          console.log(response)
+          if (response.status != 'connected') {
             FB.login(function (res) {
 
               fetch('https://graph.facebook.com/v10.0/me/accounts?access_token='+res.authResponse.accessToken).then(async (accounts) => {
@@ -42,6 +43,16 @@
               })
 
             }, { scope: 'instagram_basic,pages_read_engagement' });
+          } else {
+            fetch('https://graph.facebook.com/v10.0/me/accounts?access_token='+response.authResponse.accessToken).then(async (accounts) => {
+                accounts = await accounts.json()
+                const pageId = accounts.data[0].id
+                fetch('https://graph.facebook.com/v10.0/'+pageId+'?fields=instagram_business_account&access_token='+response.authResponse.accessToken).then(async (businessAccount) => {
+                  businessAccount = await businessAccount.json()
+                  response.authResponse.userID = businessAccount.instagram_business_account.id
+                  localStorage.setItem('instagram', JSON.stringify(response.authResponse))
+                })
+              })
           }
         });
       }

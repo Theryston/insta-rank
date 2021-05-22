@@ -35,7 +35,7 @@ export class RegistrarComponent implements OnInit {
   submit(): void {
     this.userService.register(this.user).subscribe(() => {
       this.userService.showMessage("Usuário criado com sucesso!")
-      this.router.navigate(['/planos'])
+      this.router.navigate(['/conectar'])
     })
   }
 

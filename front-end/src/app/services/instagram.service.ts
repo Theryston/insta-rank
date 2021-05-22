@@ -33,7 +33,7 @@ export class InstagramService {
 
   errorHandler(e: any): Observable<any> {
     if (e.error.message != 'Faça o pagamento para usar a ferramenta') {
-      localStorage.removeItem('instagram')
+      localStorage.clear()
       window.location.href = '/'
     } else {
       this.showMessage(e.error.message);

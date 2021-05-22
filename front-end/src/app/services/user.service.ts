@@ -39,6 +39,13 @@ export class UserService {
     )
   }
 
+  read(id: number): Observable<{user: IUser}> {
+    return this.http.get<{user: IUser}>(this.baseUrl + '/user/'+id, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
   update(user: IUser): Observable<IUser> {
     return this.http.patch<IUser>(this.baseUrl + '/user/'+user.id, user, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
       map(obj => obj),
