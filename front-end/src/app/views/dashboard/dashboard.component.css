@@ -11,9 +11,12 @@
     position: fixed;
     top: 10px;
     left: 10px;
-    color: #111;
-    background: #EEE;
+    color: #fff;
+    background: var(--e-global-color-primary);
     padding: 10px;
+    border-radius: 1rem;
+    font-family: var(--e-global-typography-primary-font-family);
+    font-weight: var(--e-global-typography-primary-font-weight);
 }
 
 a:link {

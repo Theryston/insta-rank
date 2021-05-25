@@ -6,6 +6,15 @@ import { map, catchError } from "rxjs/operators";
 import axios from "axios";
 import { Router } from '@angular/router';
 
+interface IPost {
+  like_count: number;
+  comments_count: number;
+  media_url: string;
+  permalink: string;
+  timestamp: Date;
+  id: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,9 +24,9 @@ export class InstagramService {
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient, private router: Router) { }
 
-  orderBy(datas: any) {
+  orderBy(datas: any): Observable<{ post: IPost[], message: string }> {
     const user: any = localStorage.getItem('user');
-    return this.http.post<any>(this.baseUrl + '/order/' + JSON.parse(user).id + '?orderBy=' + datas.orderBy, { instagram: datas.instagram }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
+    return this.http.post<{ post: IPost[], message: string }>(this.baseUrl + '/order/' + JSON.parse(user).id + '?orderBy=' + datas.orderBy, { instagram: datas.instagram }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )

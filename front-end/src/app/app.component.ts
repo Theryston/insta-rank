@@ -19,9 +19,9 @@ export class AppComponent implements OnInit {
     }
 
     this.userService.read(JSON.parse(user).id).subscribe(data => {
-      if (!data.user.buy) {
-        this.router.navigate(['/planos'])
-      }
+      // if (!data.user.buy) {
+      //   this.router.navigate(['/planos'])
+      // }
     })
   }
 }

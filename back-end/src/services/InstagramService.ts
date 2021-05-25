@@ -40,12 +40,13 @@ export class InstagramService {
                 return a.timestamp < b.timestamp;
             });
 
-            if (!userLocal.buy) {
-                return { post: datas.splice(6, datas.length), message: 'Faça o pagamento para ter o acesso total a ferramenta' }
-            } else {
-                return { post: datas, message: 'Ordenagem feita com sucesso' }
-            }
-
         }
+
+        if (!userLocal.buy) {
+            return { post: datas.splice(0, 6), message: 'Faça o pagamento para ter o acesso total a ferramenta' }
+        } else {
+            return { post: datas, message: 'Ordenagem feita com sucesso' }
+        }
+
     }
 }

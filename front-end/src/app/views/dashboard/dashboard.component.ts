@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { InstagramService } from './../../services/instagram.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
@@ -34,8 +35,10 @@ export class DashboardComponent implements OnInit {
   username: string;
   profile_pic_url: string;
   posts: { post: IPost[], message: string };
+  showPlansButton: boolean | undefined;
 
-  constructor(private snackBar: MatSnackBar, private instagramService: InstagramService) {
+  constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService) {
+    this.showPlansButton = false;
     this.posts = {
       post: [{
         like_count: 999,
@@ -56,6 +59,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const user: any = localStorage.getItem('user')
+    this.userService.read(JSON.parse(user).id).subscribe(data => {
+      this.showPlansButton = !data.user.buy
+    })
   }
 
   showMessage(msg: string): void {
