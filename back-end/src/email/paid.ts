@@ -10,7 +10,7 @@ export class PaidMail {
     static async paid(user: IUser): Promise<string> {
         try {
             transporter.sendMail({
-                from: `Insta Rank <contato@ileaxedeogumeoxum.com>`,
+                from: `Insta Rank <alvaro@prsacademy.com.br>`,
                 to: user.email,
                 subject: "Seu pagamento foi confirmado",
                 html: await ejs.renderFile(__dirname +'/paid.ejs', {

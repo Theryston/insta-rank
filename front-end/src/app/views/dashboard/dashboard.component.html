@@ -1,4 +1,7 @@
 <div class="container">
+    <a routerLink="/planos">
+        <div class="plans">Planos</div>
+    </a>
     <header>
         <img [src]="profile_pic_url" alt="instagram" class="logo">
         <div class="user">
@@ -17,7 +20,7 @@
         </select>
     </div>
     <section>
-        <div *ngFor="let post of posts" class="box">
+        <div *ngFor="let post of posts.post" class="box">
             <a [href]="post.permalink" target="_blank" rel="noopener noreferrer">
                 <img [src]="post.media_url" alt="">
                 <div class="data">

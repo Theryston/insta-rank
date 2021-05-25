@@ -7,6 +7,15 @@
     text-align: center;
 }
 
+.plans {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: #111;
+    background: #EEE;
+    padding: 10px;
+}
+
 a:link {
     color:#333;
     text-decoration:none;

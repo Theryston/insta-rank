@@ -33,17 +33,20 @@ export class DashboardComponent implements OnInit {
   orderBy: string;
   username: string;
   profile_pic_url: string;
-  posts: IPost[];
+  posts: { post: IPost[], message: string };
 
   constructor(private snackBar: MatSnackBar, private instagramService: InstagramService) {
-    this.posts = [{
-      like_count: 999,
-      comments_count: 999,
-      media_url: 'assets/img//logo.png',
-      permalink: 'http://instagram.com',
-      timestamp: new Date(),
-      id: '9828'
-    }];
+    this.posts = {
+      post: [{
+        like_count: 999,
+        comments_count: 999,
+        media_url: 'assets/img/logo.png',
+        permalink: 'http://instagram.com',
+        timestamp: new Date(),
+        id: '9828'
+      }],
+      message: ''
+    }
     this.orderBy = 'likes'
     this.username = ''
     this.profile_pic_url = 'assets/img/account.png'
@@ -80,6 +83,7 @@ export class DashboardComponent implements OnInit {
           instagram: JSON.parse(instagram),
           orderBy: this.orderBy
         }).subscribe(async (res) => {
+          this.showMessage(res.message)
           this.posts = res
         })
       }

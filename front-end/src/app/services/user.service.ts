@@ -20,7 +20,7 @@ interface IUser {
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://5.183.11.28:3000/api/v1'
+  baseUrl = 'https://3000-bronze-salamander-kscde3e4.ws-us07.gitpod.io/api/v1'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 

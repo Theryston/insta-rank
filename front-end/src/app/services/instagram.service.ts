@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class InstagramService {
-  baseUrl = 'http://5.183.11.28:3000/api/v1'
+  baseUrl = 'https://3000-bronze-salamander-kscde3e4.ws-us07.gitpod.io/api/v1'
   insta_base_url = 'https://graph.facebook.com'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient, private router: Router) { }
