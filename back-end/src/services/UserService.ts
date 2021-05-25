@@ -27,7 +27,6 @@ class UserService {
             userExists.password = undefined
             return userExists;
         }
-        params.buy = undefined
         params.password = bcrypt.hashSync(params.password, bcrypt.genSaltSync(10))
         const user: any = await User.create(params)
         user.password = undefined

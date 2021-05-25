@@ -32,22 +32,22 @@ export class UserService {
     });
   }
 
-  register(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(this.baseUrl + '/user', user).pipe(
+  register(user: IUser): Observable<{ user: IUser, token: string }> {
+    return this.http.post<{ user: IUser, token: string }>(this.baseUrl + '/user', user).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )
   }
 
-  read(id: number): Observable<{user: IUser}> {
-    return this.http.get<{user: IUser}>(this.baseUrl + '/user/'+id, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
+  read(id: number): Observable<{ user: IUser }> {
+    return this.http.get<{ user: IUser }>(this.baseUrl + '/user/' + id, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )
   }
 
   update(user: IUser): Observable<IUser> {
-    return this.http.patch<IUser>(this.baseUrl + '/user/'+user.id, user, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token_login')}) }).pipe(
+    return this.http.patch<IUser>(this.baseUrl + '/user/' + user.id, user, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )

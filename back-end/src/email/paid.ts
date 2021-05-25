@@ -4,6 +4,7 @@ import { transporter } from './config'
 interface IUser {
     name: string;
     email: string;
+    password?: string;
 }
 
 export class PaidMail {

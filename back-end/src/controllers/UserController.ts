@@ -4,16 +4,15 @@ import { Response, Request } from 'express';
 
 export class UserController {
 
-  constructor() {}
+  constructor() { }
 
   async register(req: Request, res: Response) {
     try {
       const userService = new UserService()
-      const user = await userService.register(req.body);
+      await userService.register(req.body);
+      const user = await userService.auth(req.body)
 
-      res.status(201).json({
-        user
-      })
+      res.status(201).json(user)
     } catch (err) {
       console.log(err)
       res.status(500)
@@ -46,12 +45,12 @@ export class UserController {
       })
     }
   }
-  
+
   async readById(req: Request, res: Response) {
     try {
       const userService = new UserService()
       const user = await userService.readById(Number(req.params.id));
-  
+
       res.status(200).json({
         user
       })

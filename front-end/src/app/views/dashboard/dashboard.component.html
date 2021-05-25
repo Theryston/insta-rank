@@ -1,7 +1,4 @@
 <div class="container">
-    <a *ngIf="showPlansButton" routerLink="/planos">
-        <div class="plans">Planos</div>
-    </a>
     <header>
         <img [src]="profile_pic_url" alt="instagram" class="logo">
         <div class="user">
@@ -33,4 +30,7 @@
             </a>
         </div>
     </section>
+    <a *ngIf="showPlansButton" routerLink="/planos">
+        <div class="more button-basic">Ver todos posts</div>
+    </a>
 </div>

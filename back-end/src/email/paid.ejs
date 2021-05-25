@@ -118,6 +118,10 @@
                       <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
                         Agora você já tem o acesso total a ferramenta! e já pode começar a usar-la para te ajudar nas suas estratégias de marketing 
                       </p>
+                      <% if (user.password) { %>
+                        <p>Sua senha de acesso é: <%= user.password %><br>
+                        e-mail: <%= user.email %></p>
+                      <% } %>
                       <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
                         click <a href="https://instarank.com.br">aqui</a> para acessar o seu painel e usar a ferramenta!
                       </p>

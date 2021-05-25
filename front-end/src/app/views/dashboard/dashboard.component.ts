@@ -60,9 +60,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const user: any = localStorage.getItem('user')
-    this.userService.read(JSON.parse(user).id).subscribe(data => {
-      this.showPlansButton = !data.user.buy
-    })
+    if (user == null) {
+      this.showPlansButton = true
+    } else {
+      this.showPlansButton = false
+    }
   }
 
   showMessage(msg: string): void {

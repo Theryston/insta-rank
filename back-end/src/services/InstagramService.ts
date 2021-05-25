@@ -13,7 +13,6 @@ export class InstagramService {
     constructor() { }
 
     async orderBy({ orderBy, instagram, id }: IOrder) {
-        const userLocal: any = await User.findOne({ where: { id } })
         const facebook_basse_url = 'https://graph.facebook.com/v10.0'
 
         const user = (await axios.get(facebook_basse_url + '/' + instagram.userID + '?fields=media_count&access_token=' + instagram.accessToken)).data
@@ -41,12 +40,15 @@ export class InstagramService {
             });
 
         }
-
-        if (!userLocal.buy) {
-            return { post: datas.splice(0, 6), message: 'Faça o pagamento para ter o acesso total a ferramenta' }
+        if (id != -1) {
+            const userLocal: any = await User.findOne({ where: { id } })
+            if (!userLocal.buy) {
+                return { post: datas.splice(0, 6), message: 'Faça o pagamento para ter o acesso total a ferramenta' }
+            } else {
+                return { post: datas, message: 'Ordenagem feita com sucesso' }
+            }
         } else {
-            return { post: datas, message: 'Ordenagem feita com sucesso' }
+            return { post: datas.splice(0, 6), message: 'Faça o pagamento para ter o acesso total a ferramenta' }
         }
-
     }
 }

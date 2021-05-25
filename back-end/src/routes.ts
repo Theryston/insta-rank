@@ -21,7 +21,7 @@ routes.delete('/api/v1/user/:id', userMiddleware.auth, userController.delete)
 routes.post('/api/v1/user/auth', userController.auth)
 
 // instagram
-routes.post('/api/v1/order/:id', userMiddleware.auth, instagramController.orderBy)
+routes.post('/api/v1/order/:id', instagramController.orderBy)
 
 // payment
 routes.post('/api/v1/pay', paymentController.pay)

@@ -11,9 +11,6 @@ const routes: Routes = [{
   path: '',
   component: HomeComponent
 }, {
-  path: 'registrar',
-  component: RegistrarComponent
-}, {
   path: 'conectar',
   component: ConectarComponent
 }, {
