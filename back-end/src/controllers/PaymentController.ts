@@ -4,6 +4,7 @@ export class PaymentController {
     constructor() { }
 
     async pay(req: Request, res: Response) {
+        console.log('new pay')
         const paymentService = new PaymentService()
         try {
             await paymentService.pay(req.body)
