@@ -40,7 +40,7 @@
                 })
               })
 
-            }, { scope: 'instagram_basic,pages_read_engagement' });
+            }, { scope: '' });
           } else {
             fetch('https://graph.facebook.com/v10.0/me/accounts?access_token=' + response.authResponse.accessToken).then(async (accounts) => {
               accounts = await accounts.json()
