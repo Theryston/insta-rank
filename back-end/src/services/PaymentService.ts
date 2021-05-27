@@ -11,7 +11,7 @@ export class PaymentService {
             if (user) {
                 if (datas.edz_fat_status == '3') {
                     await User.update({ buy: true }, { where: { email: datas.edz_cli_email } })
-                    await PaidMail.paid({ email: datas.edz_cli_email, name: datas.edz_cli_name })
+                    await PaidMail.paid({ email: datas.edz_cli_email, name: datas.edz_cli_rsocial })
                 } else {
                     await User.update({ buy: false }, { where: { email: datas.edz_cli_email } })
                 }
@@ -20,7 +20,7 @@ export class PaymentService {
                     const userService = new UserService()
                     const password = this.password(8)
                     await userService.register({ name: datas.edz_cli_name, email: datas.edz_cli_email, password: password, buy: true })
-                    await PaidMail.paid({ email: datas.edz_cli_email, name: datas.edz_cli_name, password: password })
+                    await PaidMail.paid({ email: datas.edz_cli_email, name: datas.edz_cli_rsocial, password: password })
                 }
             }
             return "ok"

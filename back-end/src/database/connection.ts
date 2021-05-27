@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
-const connection = new Sequelize('rank_insta', 'gitpod', '@Senhagenerica1', {
-  host: 'localhost',
+const connection = new Sequelize('rank_insta', 'prod', 'Senhagenerica1', {
+  host: 'mysql743.umbler.com',
   dialect: 'mysql'
 })
 
