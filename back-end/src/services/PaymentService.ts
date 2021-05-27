@@ -19,12 +19,13 @@ export class PaymentService {
                 if (datas.edz_fat_status == '3') {
                     const userService = new UserService()
                     const password = this.password(8)
-                    await userService.register({ name: datas.edz_cli_name, email: datas.edz_cli_email, password: password, buy: true })
+                    await userService.register({ name: datas.edz_cli_rsocial, email: datas.edz_cli_email, password: password, buy: true })
                     await PaidMail.paid({ email: datas.edz_cli_email, name: datas.edz_cli_rsocial, password: password })
                 }
             }
             return "ok"
         } catch (error) {
+            console.log(error)
             throw new error
         }
     }
