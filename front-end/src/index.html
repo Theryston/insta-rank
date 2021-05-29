@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="pt-br">
-
 <head>
   <meta charset="utf-8">
   <title>Insta rank | ordenar sua conta do instagram</title>
@@ -13,68 +12,6 @@
 </head>
 
 <body class="mat-typography">
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '2291438624326188',
-        autoLogAppEvents: true,
-        xfbml: true,
-        version: 'v10.0'
-      });
-    }
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-  <script>
-    function check() {
-      if (window.location.pathname == '/dashboard' && localStorage.getItem('instagram') == null) {
-        FB.getLoginStatus(function (response) {
-          if (response.status != 'connected') {
-            FB.login(function (res) {
-              fetch('https://graph.facebook.com/v10.0/me/accounts?access_token=' + res.authResponse.accessToken).then(async (accounts) => {
-                accounts = await accounts.json()
-                const pageId = accounts.data[0].id
-                fetch('https://graph.facebook.com/v10.0/' + pageId + '?fields=instagram_business_account&access_token=' + res.authResponse.accessToken).then(async (businessAccount) => {
-                  businessAccount = await businessAccount.json()
-                  res.authResponse.userID = businessAccount.instagram_business_account.id
-                  localStorage.setItem('instagram', JSON.stringify(res.authResponse))
-                })
-              })
-
-            }, { scope: 'instagram_basic,pages_read_engagement' });
-          } else {
-            fetch('https://graph.facebook.com/v10.0/me/accounts?access_token=' + response.authResponse.accessToken).then(async (accounts) => {
-              accounts = await accounts.json()
-              const pageId = accounts.data[0].id
-              fetch('https://graph.facebook.com/v10.0/' + pageId + '?fields=instagram_business_account&access_token=' + response.authResponse.accessToken).then(async (businessAccount) => {
-                businessAccount = await businessAccount.json()
-                response.authResponse.userID = businessAccount.instagram_business_account.id
-                localStorage.setItem('instagram', JSON.stringify(response.authResponse))
-              })
-            })
-          }
-        });
-      }
-    }
-
-
-    var dashHistory = localStorage.getItem('inDashboard')
-    setTimeout(() => {
-      dashHistory = localStorage.getItem('inDashboard')
-      setInterval(() => {
-        const inDashboard = localStorage.getItem('inDashboard')
-        if (dashHistory != inDashboard) {
-          if (dashHistory == 'true') {
-            dashHistory = 'false'
-          } else {
-            dashHistory = 'true'
-          }
-          check()
-        }
-      })
-    }, 1000)
-
-    setTimeout(check, 2000);
-  </script>
   <app-root></app-root>
 </body>
 

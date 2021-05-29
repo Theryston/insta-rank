@@ -19,6 +19,7 @@ interface IPost {
   providedIn: 'root'
 })
 export class InstagramService {
+  // baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
   baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
   insta_base_url = 'https://graph.facebook.com'
 
@@ -27,12 +28,12 @@ export class InstagramService {
   orderBy(datas: any): Observable<{ post: IPost[], message: string }> {
     const user: any = localStorage.getItem('user');
     if (user != null) {
-      return this.http.post<{ post: IPost[], message: string }>(this.baseUrl + '/order/' + JSON.parse(user).id + '?orderBy=' + datas.orderBy, { instagram: datas.instagram }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
+      return this.http.post<{ post: IPost[], message: string }>(this.baseUrl + '/order/' + JSON.parse(user).id + '?orderBy=' + datas.orderBy, { posts: datas.posts }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
         map(obj => obj),
         catchError(e => this.errorHandler(e))
       )
     } else {
-      return this.http.post<{ post: IPost[], message: string }>(this.baseUrl + '/order/-1?orderBy=' + datas.orderBy, { instagram: datas.instagram }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
+      return this.http.post<{ post: IPost[], message: string }>(this.baseUrl + '/order/-1?orderBy=' + datas.orderBy, { posts: datas.posts }, { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token_login') }) }).pipe(
         map(obj => obj),
         catchError(e => this.errorHandler(e))
       )

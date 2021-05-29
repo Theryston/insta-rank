@@ -1,13 +1,13 @@
 <div class="container">
     <header>
         <img [src]="profile_pic_url" alt="instagram" class="logo">
-        <div class="user">
+        <form (submit)="submit()">
             <div class="input-basic">
-                <input disabled type="text" placeholder="click no botão 'Ordenar' abaixo" [(ngModel)]="username"
-                    name="username">
+                <input type="text" autocomplete="off" placeholder="Digite o @ do usuário que você quer ordenar"
+                    [(ngModel)]="username" name="username">
             </div>
-            <button (click)="submit()" class="button-basic">Ordenar</button>
-        </div>
+            <button class="button-basic">Ordenar</button>
+        </form>
     </header>
     <div class="select">
         <select (change)="submit()" [(ngModel)]="orderBy" name="orderBy">
@@ -17,20 +17,22 @@
         </select>
     </div>
     <section>
-        <div *ngFor="let post of posts.post" class="box">
-            <a [href]="post.permalink" target="_blank" rel="noopener noreferrer">
-                <img [src]="post.media_url" alt="">
+        <div *ngFor="let post of posts" class="box">
+            <a [href]="post.url" target="_blank" rel="noopener noreferrer">
+                <img [src]="post.node.thumbnail_src" alt="">
                 <div class="data">
                     <img src="https://image.flaticon.com/icons/png/512/833/833472.png" alt="likes" class="icon">
-                    <p>{{post.like_count}}</p>
+                    <p>{{post.node.edge_media_preview_like.count}}</p>
                     <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários" class="icon">
-                    <p>{{post.comments_count}}</p>
+                    <p>{{post.node.edge_media_to_comment.count}}</p>
                 </div>
-                <p class="date">{{ post.timestamp | date:"dd/MM/yyyy" }}</p>
             </a>
         </div>
     </section>
     <a *ngIf="showPlansButton" routerLink="/planos">
         <div class="more button-basic">Ver todos posts</div>
     </a>
+</div>
+<div class="load" *ngIf='load'>
+    <div class="circle"></div>
 </div>
