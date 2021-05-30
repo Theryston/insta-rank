@@ -12,7 +12,7 @@
     <div class="order-datas">
         <div class="input-basic">
             <p>Ordenar por:</p>
-            <select (click)="submit()" [(ngModel)]="orderBy" name="orderBy">
+            <select [(ngModel)]="orderBy" name="orderBy">
                 <option value="likes">Curtidas</option>
                 <option value="comments">Comentários</option>
                 <option value="date">Data</option>
@@ -20,7 +20,7 @@
         </div>
         <div class="input-basic">
             <p>Apenas:</p>
-            <select (click)="submit()" [(ngModel)]="filter.justType" name="justType">
+            <select [(ngModel)]="filter.justType" name="justType">
                 <option value="all">Todos</option>
                 <option value="videos">Vídeos</option>
                 <option value="images">Imagens</option>
