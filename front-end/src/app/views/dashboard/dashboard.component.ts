@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
   constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService) {
     this.showPlansButton = false;
     this.posts = []
-    this.orderBy = 'date'
+    this.orderBy = 'likes'
     this.username = ''
     this.profile_pic_url = 'assets/img/account.jpg'
   }
