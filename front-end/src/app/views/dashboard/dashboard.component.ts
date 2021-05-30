@@ -2,7 +2,6 @@ import { UserService } from './../../services/user.service';
 import { InstagramService } from './../../services/instagram.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios'
 
 interface IPost {
   like_count: number;
