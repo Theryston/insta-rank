@@ -22,37 +22,6 @@
     flex-direction: column;
 }
 
-/* .load div {
-    width: 80%;
-} */
-
-/* .load label {
-    margin: 20px; 
-    font-size: 1rem;  
-    font-family: var(--e-global-typography-primary-font-family);
-    font-weight: var(--e-global-typography-secondary-font-weight);
-} */
-
-/* .load #progress {
-    margin-top: 10px;
-    appearance: none;
-    height: 30px;
-    width: 100%;
-    box-shadow: none;
-    outline: none;
-    border-radius: 1rem;
-}
-
-.load #progress[value]::-webkit-progress-bar {
-    background: #FFF;
-    border-radius: 1rem;
-}
-
-.load #progress[value]::-webkit-progress-value {
-    background: var(--e-global-color-primary);
-    border-radius: 1rem;
-} */
-
 .load .circle {
     height: 100px;
     width: 100px;
@@ -72,20 +41,6 @@
 @keyframes loadKey {
     to { transform: rotate(360deg); }
 }
-
-/* ::-moz-progress-bar */
-
-/*
-.load #progress[value]::-moz-progress-bar {
-    appearance: none;
-    background: #FFF;
-} */
-
-/* .load #progress:not([value])::-webkit-progress-bar {
-    appearance: none;
-    background: red;
-} */
-
 
 .container .more {
     height: 20px;
@@ -166,29 +121,6 @@
     margin-bottom: 20px;
     border-radius: 100%;
 }
-/* 
-.container .select {
-    margin: 20px;
-    width: 80%;
-    border: 1px var(--e-global-color-secondary) solid;
-    outline: none;
-    height: 50px;
-    border-radius: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    background: #FFF;
-    position: relative;
-}
-
-.container .select select {
-    border: none;
-    outline: none;
-    width: 95%;
-    height: 40px;
-    margin: 0px;
-} */
 
 .container .select p {
     background: #FFF;
@@ -198,14 +130,6 @@
     font-weight: 300;
     left:  10px;
 }
-
-/* .container select {
-    width: 80%;
-    border: 1px var(--e-global-color-text) solid;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 10px;
-} */
 
 .container section {
     display: grid;
@@ -219,26 +143,19 @@
 
 
 .container section .box {
-    /* width: 33%; */
-    /* height: 30%; */
-    /* max-width: 293px; */
-    /* height: 90%;  */
     background: #FFF;
     color: #333;
-    /* border-radius: 10px; */
     border: 1px #DDD solid;
 }
 
 .container section .box:hover {
-    color: #EEE;
-    background: linear-gradient(95.92deg, #3f729b -21.93%, var(--e-global-color-primary) 112.22%), #AAAAAA;
+    background: rgb(240, 240, 240);
 }
 
 .container section .box img {
     width: 100%;
     height: calc(100% - 2rem);
     object-fit: cover;
-    /* border-radius: 10px 10px 0px 0px; */
 }
 
 .container section .box .data {
@@ -274,6 +191,7 @@
 }
 
 .container section .box .data p {
+    color: #333;
     margin-left: 2px;
 }
 
