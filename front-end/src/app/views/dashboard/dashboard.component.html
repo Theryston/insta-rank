@@ -9,30 +9,56 @@
             <button class="button-basic">Ordenar</button>
         </form>
     </header>
-    <div class="select">
-        <select (change)="submit()" [(ngModel)]="orderBy" name="orderBy">
-            <option value="likes">Curtidas</option>
-            <option value="comments">Comentários</option>
-            <option value="date">Data</option>
-        </select>
+    <div class="order-datas">
+        <div class="input-basic">
+            <p>Ordenar por:</p>
+            <select (click)="submit()" [(ngModel)]="orderBy" name="orderBy">
+                <option value="likes">Curtidas</option>
+                <option value="comments">Comentários</option>
+                <option value="date">Data</option>
+            </select>
+        </div>
+        <div class="input-basic">
+            <p>Apenas:</p>
+            <select (click)="submit()" [(ngModel)]="filter.justType" name="justType">
+                <option value="all">Todos</option>
+                <option value="videos">Vídeos</option>
+                <option value="images">Imagens</option>
+                <option value="igtv">IGTV</option>
+            </select>
+        </div>
+        <div class="input-basic">
+            <p>Do dia:</p>
+            <input [(ngModel)]="filter.initDate" type="date">
+        </div>
+        <div class="input-basic">
+            <p>Até o dia:</p>
+            <input [(ngModel)]="filter.endDate" type="date">
+        </div>
     </div>
     <section>
         <div *ngFor="let post of posts" class="box">
             <a [href]="post.url" target="_blank" rel="noopener noreferrer">
                 <img [src]="post.node.thumbnail_src" alt="">
                 <div class="data">
-                    <img src="https://image.flaticon.com/icons/png/512/833/833472.png" alt="likes" class="icon">
-                    <p>{{post.node.edge_media_preview_like.count}}</p>
-                    <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários" class="icon">
-                    <p>{{post.node.edge_media_to_comment.count}}</p>
+                    <div class="item">
+                        <img src="https://image.flaticon.com/icons/png/512/833/833472.png" alt="likes" class="icon">
+                        <p>{{post.node.edge_media_preview_like.count}}</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários"
+                            class="icon">
+                        <p>{{post.node.edge_media_to_comment.count}}</p>
+                    </div>
                 </div>
             </a>
         </div>
     </section>
-    <a *ngIf="showPlansButton" routerLink="/planos">
+    <a *ngIf="showPlansButton" href="https://instarank.prsacademy.com.br/#planos">
         <div class="more button-basic">Ver todos posts</div>
     </a>
 </div>
-<div class="load" *ngIf='load'>
+<div class="load" *ngIf='load.isVisible'>
     <div class="circle"></div>
+    <p id="percent">{{load.status}}/{{load.max}}</p>
 </div>

@@ -16,12 +16,6 @@ const routes: Routes = [{
 }, {
   path: 'dashboard',
   component: DashboardComponent
-}, {
-  path: 'auth',
-  component: AuthInstagramComponent
-} ,{ 
-  path: 'planos',
-  component: PlanosComponent
 }];
 
 @NgModule({

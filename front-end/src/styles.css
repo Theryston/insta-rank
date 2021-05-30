@@ -1,19 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-    --e-global-color-primary: #6ec1e4;
-    --e-global-color-secondary: #54595f;
+    --e-global-color-primary: #E71967;
+    --e-global-color-secondary: #54595F;
     --e-global-color-text: #7a7a7a;
     --e-global-color-accent: #61ce70;
-    --e-global-typography-primary-font-family: "Arial";
+    --e-global-typography-primary-font-family: "Roboto";
     --e-global-typography-primary-font-weight: 600;
-    --e-global-typography-secondary-font-family: "Arial";
+    --e-global-typography-secondary-font-family: "Roboto Slab";
     --e-global-typography-secondary-font-weight: 400;
-    --e-global-typography-text-font-family: "Arial";
+    --e-global-typography-text-font-family: "Roboto";
     --e-global-typography-text-font-weight: 400;
-    --e-global-typography-accent-font-family: "Arial";
+    --e-global-typography-accent-font-family: "Roboto";
     --e-global-typography-accent-font-weight: 500;
-    --e-global-typography-73cdbfe-font-family: "Arial";
+    --e-global-typography-73cdbfe-font-family: "Roboto";
     --e-global-typography-73cdbfe-font-size: 62px;
     --e-global-typography-73cdbfe-line-height: 2.9em;
 }
@@ -30,54 +30,104 @@ body {
 }
 
 .button-basic {
-    font-family: var(--e-global-typography-primary-font-family);
+    font-family: var(--e-global-typography-accent-font-family), Sans-serif;
+    font-weight: var(--e-global-typography-accent-font-weight);
     background: var(--e-global-color-primary);
-    font-size: 1.2rem;
-    font-weight: var(--e-global-typography-primary-font-weight);
+    font-size: 1rem;
     color: #fff;
     border: none;
     outline: none;
-    width: 200px;
-    height: 50px;
-    box-shadow: 0px 0px 15px var(--e-global-color-primary);
+    width: 80%;
+    height: 40px;
     padding: 10px;
+    transition: all.31s;
+    border-radius: .2rem;
 }
 
 .button-basic:hover {
-    background: var(--e-global-color-secondary);
-    box-shadow: 0px 0px 15px var(--e-global-color-secondary);
+    background: var(--e-global-color-accent);
 }
 
 .input-basic {
+    background-color: #ffffff;
+    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
+    font-weight: var( --e-global-typography-text-font-weight );
     width: 80%;
-    border: 1px var(--e-global-color-secondary) solid;
+    border: 0.5px #999 solid;
     outline: none;
-    height: 50px;
-    border-radius: .5rem;
+    height: 40px;
+    padding: 2px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: #FFF;
     position: relative;
+    border-radius: 2px;
 }
 
 .input-basic input {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
+    font-weight: var( --e-global-typography-text-font-weight );
+    font-size: 15px;
+    border: none;
+    outline: none;
+    width: 95%;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    padding: 1px 2px;
+    border-image: initial;
+    background: #FFF;
+}
+
+.input-basic select {
+    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
+    font-weight: var( --e-global-typography-text-font-weight );
+    font-size: 15px;
     border: none;
     outline: none;
     width: 95%;
     height: 40px;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    padding: 1px 2px;
+    border-image: initial;
+    background: #FFF;
 }
 
 .input-basic p {
     background: #FFF;
-    padding: 5px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     position: absolute;
-    top: -30%;
+    top: -20%;
     font-weight: 300;
     left:  10px;
 }
 
 a:link {
     text-decoration: none;
-    color: var(--e-global-color-accent);
+    color: var(--e-global-color-text);
 }
