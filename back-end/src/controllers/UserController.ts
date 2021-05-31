@@ -78,4 +78,28 @@ export class UserController {
       })
     }
   }
+
+  async forgotPassword(req: Request, res: Response) {
+    try {
+      const userService = new UserService()
+      await userService.forgotPassword(req.body.email)
+      res.sendStatus(200)
+    } catch (error) {
+      res.status(500).json({
+        message: error.message
+      })
+    }
+  }
+
+  async resetPassword(req: Request, res: Response) {
+    try {
+      const userService = new UserService()
+      await userService.resetPassword(String(req.query.token), req.body.password)
+      res.sendStatus(200)
+    } catch (error) {
+      res.status(500).json({
+        message: error.message
+      })
+    }
+  }
 }

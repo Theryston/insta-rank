@@ -21,6 +21,7 @@ interface IUser {
 })
 export class UserService {
   baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
+  // baseUrl = 'https://3000-red-orca-d1hbfuab.ws-us08.gitpod.io/api/v1'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 

@@ -19,8 +19,8 @@ interface IPost {
   providedIn: 'root'
 })
 export class InstagramService {
-  // baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
   baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
+  // baseUrl = 'https://3000-red-orca-d1hbfuab.ws-us08.gitpod.io/api/v1'
   insta_base_url = 'https://graph.facebook.com'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient, private router: Router) { }

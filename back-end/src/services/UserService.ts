@@ -1,4 +1,6 @@
+import { ForgotPasswordMail } from './../email/forgotPassword';
 import { User } from '../database/User';
+import { Token } from '../database/Token';
 import bcrypt from 'bcryptjs';
 import util from 'util';
 import jwt from 'jsonwebtoken';
@@ -71,6 +73,38 @@ class UserService {
         } catch (error) {
             throw error
         }
+    }
+
+    async forgotPassword(email: string) {
+        const user: any = await User.findOne({ where: { email } })
+        if (user) {
+            const token = this.stringRender(50)
+            await Token.create({ token, userId: user.id })
+            await ForgotPasswordMail.sendEmail(user.email, token)
+            return "ok"
+        } else {
+            throw new Error('Usuário ainda não cadastrado')
+        }
+    }
+
+    async resetPassword(token: string, newPassword: string) {
+        try {
+            const datas: any = await Token.findOne({ where: { token }, include: [{ model: User }] })
+            newPassword = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10))
+            await User.update({ password: newPassword }, { where: { id: datas.user.id } })
+            return 'ok'
+        } catch (error) {
+            throw error
+        }
+    }
+
+    private stringRender(tamanho: number) {
+        var stringAleatoria = '';
+        var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (var i = 0; i < tamanho; i++) {
+            stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        return stringAleatoria;
     }
 }
 
