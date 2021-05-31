@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { InstagramService } from './../../services/instagram.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
 
 interface IPost {
   like_count: number;
@@ -81,6 +82,7 @@ export class DashboardComponent implements OnInit {
         this.load.isVisible = true
         this.load.status = num
         this.load.max = 100
+        this.load.label = 'Procurando perfil...'
         try {
           let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
           var myHeaders = new Headers();

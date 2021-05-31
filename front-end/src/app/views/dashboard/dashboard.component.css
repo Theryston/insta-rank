@@ -122,6 +122,13 @@
     border-radius: 100%;
 }
 
+label {
+    color: #FFF;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
 .container .select p {
     background: #FFF;
     padding: 5px;

@@ -58,6 +58,7 @@
     </a>
 </div>
 <div class="load" *ngIf='load.isVisible'>
+    <label>{{load.label}}</label>
     <div class="circle"></div>
     <p id="percent">{{load.status}}/{{load.max}}</p>
 </div>
