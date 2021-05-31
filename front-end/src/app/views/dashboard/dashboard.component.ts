@@ -90,7 +90,8 @@ export class DashboardComponent implements OnInit {
             method: 'GET',
             headers: myHeaders,
             mode: 'cors',
-            cache: 'default'
+            cache: 'default',
+            credentials: "same-origin"
           });
           console.log('request to: '+url)
           res = await fetch(myRequest)
