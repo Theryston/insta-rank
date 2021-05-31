@@ -74,7 +74,8 @@ export class DashboardComponent implements OnInit {
         this.showMessage('Insira um @ válido!')
         this.load.isVisible = false
       }
-      let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
+      // ${~~(Math.random() * 3333)}
+      let url = `https://images3333-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
       var myHeaders = new Headers();
       var myRequest = new Request(url, {
         method: 'GET',
