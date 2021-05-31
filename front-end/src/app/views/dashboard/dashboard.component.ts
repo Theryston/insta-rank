@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
         this.load.status = num
         this.load.max = 3333
         try {
-          let url = `https://images${num}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
+          let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}?__a=1`)}`;
           var myHeaders = new Headers();
           var myRequest = new Request(url, {
             method: 'GET',
