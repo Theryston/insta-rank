@@ -90,6 +90,7 @@ export class DashboardComponent implements OnInit {
             mode: 'cors',
             cache: 'default'
           });
+          console.log('request to: '+url)
           res = await fetch(myRequest)
           if (res.status == 200) {
             gotUserDatas = true
