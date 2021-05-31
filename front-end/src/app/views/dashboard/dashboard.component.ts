@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
         this.showMessage('Insira um @ válido!')
         this.load.isVisible = false
       }
-      let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}`)}`;
+      let url = `https://images3988-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}?__a=1?`)}`;
       const res = await window.fetch(url);
       if (res.status > 399 && res.status < 501) {
         this.showMessage('Houve um  erro! Confira o @ que você digitou e tente novamente!')
