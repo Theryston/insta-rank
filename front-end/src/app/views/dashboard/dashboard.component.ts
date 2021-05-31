@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
         this.load.max = 100
         this.load.label = 'Procurando perfil...'
         try {
-          let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
+          let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}`)}`;
           var myHeaders = new Headers();
           var myRequest = new Request(url, {
             method: 'GET',
