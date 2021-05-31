@@ -83,7 +83,7 @@ export class UserController {
     try {
       const userService = new UserService()
       await userService.forgotPassword(req.body.email)
-      res.sendStatus(200)
+      res.status(200).json({ message: 'Enviamos um e-mail para você. click no link que contém nesse e-mail' })
     } catch (error) {
       res.status(500).json({
         message: error.message
@@ -95,7 +95,7 @@ export class UserController {
     try {
       const userService = new UserService()
       await userService.resetPassword(String(req.query.token), req.body.password)
-      res.sendStatus(200)
+      res.status(200).json({ message: 'Senha redefinida com sucesso!' })
     } catch (error) {
       res.status(500).json({
         message: error.message

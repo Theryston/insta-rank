@@ -54,6 +54,20 @@ export class UserService {
     )
   }
 
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/user/password/forgot', { email }).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
+  resetPassword(password: string, token: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/user/password/reset?token=' + token, { password }).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
   auth(user: { email: string; password: string; }): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/user/auth', user).pipe(
       map(obj => obj),

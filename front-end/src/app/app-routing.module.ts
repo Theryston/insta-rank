@@ -6,6 +6,8 @@ import { ConectarComponent } from './views/conectar/conectar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { HomeComponent } from './views/home/home.component';
 import { RegistrarComponent } from './views/registrar/registrar.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +18,12 @@ const routes: Routes = [{
 }, {
   path: 'dashboard',
   component: DashboardComponent
+}, {
+  path: 'password/forgot',
+  component: ForgotPasswordComponent
+}, {
+  path: 'password/reset',
+  component: ResetPasswordComponent
 }];
 
 @NgModule({

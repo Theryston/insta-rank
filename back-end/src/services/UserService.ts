@@ -91,7 +91,8 @@ class UserService {
         try {
             const datas: any = await Token.findOne({ where: { token }, include: [{ model: User }] })
             newPassword = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10))
-            await User.update({ password: newPassword }, { where: { id: datas.user.id } })
+            await User.update({ password: newPassword }, { where: { id: datas.user.id } });
+            await Token.destroy({ where: { id: datas.id } })
             return 'ok'
         } catch (error) {
             throw error

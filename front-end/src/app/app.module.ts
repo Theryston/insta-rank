@@ -11,7 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInstagramComponent } from './views/auth-instagram/auth-instagram.component';
-import { PlanosComponent } from './views/planos/planos.component'
+import { PlanosComponent } from './views/planos/planos.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PlanosComponent } from './views/planos/planos.component'
     ConectarComponent,
     DashboardComponent,
     AuthInstagramComponent,
-    PlanosComponent
+    PlanosComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
