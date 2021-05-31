@@ -75,15 +75,38 @@ export class DashboardComponent implements OnInit {
         this.load.isVisible = false
       }
       // ${~~(Math.random() * 3333)}
-      let url = `https://images3333-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
-      var myHeaders = new Headers();
-      var myRequest = new Request(url, {
-        method: 'GET',
-        headers: myHeaders,
-        mode: 'cors',
-        cache: 'default'
-      });
-      const res = await fetch(myRequest)
+      let gotUserDatas = false
+      var res: any = ''
+      for (let num = 0; !gotUserDatas && num != 3333; num++) {
+        this.load.isVisible = true
+        this.load.status = num
+        this.load.max = 3333
+        try {
+          let url = `https://images${num}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
+          var myHeaders = new Headers();
+          var myRequest = new Request(url, {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+          });
+          res = await fetch(myRequest)
+          if (res.status == 200) {
+            gotUserDatas = true
+          }
+        } catch (error) {
+          console.log('error', error)
+          if (num == 3332) {
+            this.load.isVisible = false
+            this.load.status = 0
+            this.load.max = 0
+          }
+          gotUserDatas = false
+        }
+      }
+      this.load.isVisible = false
+      this.load.status = 0
+      this.load.max = 0
       if (res.status > 399 && res.status < 501) {
         this.showMessage('Houve um  erro! Confira o @ que você digitou e tente novamente!')
         this.load.isVisible = false
