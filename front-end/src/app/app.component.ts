@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
     // if (window.location.pathname == '/dashboard' && localStorage.getItem('token_login') == null) {
     //   window.location.href = '/'
     // } else 
-    if (localStorage.getItem('token_login') != null && window.location.pathname != '/dashboard') {
+    
+    if (localStorage.getItem('token_login') != null && window.location.pathname == '/') {
       this.router.navigate(['/dashboard'])
     }
 
