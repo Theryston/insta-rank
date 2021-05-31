@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
         this.load.status = num
         this.load.max = 3333
         try {
-          let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}?__a=1`)}`;
+          let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
           var myHeaders = new Headers();
           var myRequest = new Request(url, {
             method: 'GET',
@@ -113,6 +113,7 @@ export class DashboardComponent implements OnInit {
         this.load.isVisible = false
       }
       const resText: any = await res.text();
+      console.log(resText)
       const regExp: any = resText.match(new RegExp(/<script type="text\/javascript">window\._sharedData = (.*);<\/script>/))[1]
       var userDatas = JSON.parse(regExp).entry_data.ProfilePage[0];
       this.load.max = userDatas.graphql.user.edge_owner_to_timeline_media.count
