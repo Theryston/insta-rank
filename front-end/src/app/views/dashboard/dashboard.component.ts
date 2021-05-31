@@ -66,6 +66,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async submit() {
+    this.load.status = 0
     const posts: any = []
     try {
       const username = this.username.replace('@', '')
