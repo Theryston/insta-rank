@@ -8,17 +8,52 @@
 }
 
 .container form {
+    width: 80%;
+    border: 1px #DDD solid;
     display: flex;
     flex-direction: column;
-    width: 80%;
     justify-content: center;
     align-items: center;
-    background: #FFF;
-    padding: 50px;
+    flex-wrap: wrap;
+    padding: 10px;
     border-radius: 10px;
+    background: #FFF;
+}
+
+.container form img {
+    height: 100px;
+    margin-bottom: 20px;
 }
 
 .container form .input-basic {
     margin-bottom: 20px;
-    width: 100%;
+}
+
+.button-basic {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 190px;
+}
+
+.options a {
+    color: #888;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.options a p {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.options hr {
+    height: 1rem;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }

@@ -1,5 +1,6 @@
 <div class="container">
     <form (submit)="submit()">
+        <img src="assets/img/logo.png" alt="">
         <div class="input-basic">
             <input required placeholder="Digite aqui o  seu email" type="text" name="email" [(ngModel)]="user.email">
             <p>E-mail</p>
@@ -9,6 +10,14 @@
             <input required placeholder="Digite uma  senha para acessar a ferramenta" type="password" name="password" [(ngModel)]="user.password">
         </div>
         <button class="button-basic" type="submit">Conectar</button>
+        <div class="options">
+            <a href="https://instarank.prsacademy.com.br/#planos">
+                <p>Registrar-se</p>
+            </a>
+            <hr>
+            <a routerLink="/password/forgot">
+                <p>Redefinir senha</p>
+            </a>
+        </div>
     </form>
-    <p><a href="https://instarank.prsacademy.com.br/#planos">ainda não tenho uma conta</a></p>
 </div>
