@@ -77,10 +77,10 @@ export class DashboardComponent implements OnInit {
       // ${~~(Math.random() * 3333)}
       let gotUserDatas = false
       var res: any = ''
-      for (let num = 0; !gotUserDatas && num != 3333; num++) {
+      for (let num = 0; !gotUserDatas && num != 100; num++) {
         this.load.isVisible = true
         this.load.status = num
-        this.load.max = 3333
+        this.load.max = 100
         try {
           let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/${username}`)}`;
           var myHeaders = new Headers();
@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
           }
         } catch (error) {
           console.log('error', error)
-          if (num == 3332) {
+          if (num == 99) {
             this.load.isVisible = false
             this.load.status = 0
             this.load.max = 0
