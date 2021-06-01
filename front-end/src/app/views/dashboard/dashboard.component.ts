@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     status: 0,
     label: ''
   }
-  options = {
+  options_default = {
     username: "@ptkdev",
     "items-limit": "9",
     "image-width": "100%",
@@ -61,8 +61,11 @@ export class DashboardComponent implements OnInit {
     "mouse-hover": "disabled",
     "show-title": "enabled",
   };
+  options: any;
+
 
   constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService) {
+    this.options = Object.create(this.options_default);
     this.showPlansButton = false;
     this.posts = []
     this.orderBy = 'likes'
@@ -98,6 +101,7 @@ export class DashboardComponent implements OnInit {
         this.load.max = 100
         this.load.label = 'Procurando perfil...'
         try {
+          console.log(this.options)
           let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}`)}`;
           res = await window.fetch(url, {
             method: "GET", mode: "cors", redirect: "follow", cache: this.options["cache"] === null || this.options["cache"] === "enabled" ? "force-cache" : "default",
