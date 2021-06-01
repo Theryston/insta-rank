@@ -42,7 +42,7 @@ export class CompatibleComponent implements OnInit {
     this.activatedRouter.queryParams.subscribe(queryParams => {
       if (window.localStorage.getItem('valid') == null) {
         if (!queryParams.status) {
-          this.text = 'Precisamos que você faça o teste de compatibilidade com o seu dispositivo para termos certeza de que o sistema vá funciona perfeitamente com o seu ele!'
+          this.text = 'Precisamos que você faça o teste de compatibilidade com o seu dispositivo para termos certeza de que o sistema vá funciona perfeitamente com ele!'
           this.button = true;
         } else {
           this.load.status = Number(queryParams.status)
