@@ -1,0 +1,11 @@
+<div class="container">
+    <img src="assets/img/logo.png" alt="instagram" class="logo">
+    <h1 class="title">Seu dispositivo é compatível?</h1>
+    <p class="description">{{text}}</p>
+    <button (click)="start()" *ngIf="button" class="button-basic">Fazer o teste agora</button>
+</div>
+<div class="load" *ngIf='load.isVisible'>
+    <label>{{load.label}}</label>
+    <div class="circle"></div>
+    <p id="percent">{{load.status}}/{{load.max}}</p>
+</div>

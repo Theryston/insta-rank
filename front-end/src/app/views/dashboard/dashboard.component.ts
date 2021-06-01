@@ -3,6 +3,7 @@ import { InstagramService } from './../../services/instagram.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { ThisReceiver } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 interface IPost {
   like_count: number;
@@ -64,13 +65,16 @@ export class DashboardComponent implements OnInit {
   options: any;
 
 
-  constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService) {
+  constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService, private router: Router) {
     this.options = Object.create(this.options_default);
     this.showPlansButton = false;
     this.posts = []
     this.orderBy = 'likes'
     this.username = ''
     this.profile_pic_url = 'assets/img/account.jpg'
+    if (window.localStorage.getItem('supported') == null) {
+      this.router.navigate(['/compativel'])
+    }
   }
 
   ngOnInit(): void { }

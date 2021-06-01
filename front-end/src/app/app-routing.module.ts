@@ -8,6 +8,7 @@ import { HomeComponent } from './views/home/home.component';
 import { RegistrarComponent } from './views/registrar/registrar.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { CompatibleComponent } from './views/compatible/compatible.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,9 @@ const routes: Routes = [{
 }, {
   path: 'password/reset',
   component: ResetPasswordComponent
+}, {
+  path: 'compativel',
+  component: CompatibleComponent
 }];
 
 @NgModule({
