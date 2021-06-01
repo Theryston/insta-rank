@@ -47,6 +47,20 @@ export class DashboardComponent implements OnInit {
     status: 0,
     label: ''
   }
+  options = {
+    username: "@ptkdev",
+    "items-limit": "9",
+    "image-width": "100%",
+    "image-height": "100%",
+    grid: "responsive",
+    cache: "enabled",
+    "border-spacing": "2px",
+    "border-corners": "5",
+    "force-square": "yes",
+    shadows: "disabled",
+    "mouse-hover": "disabled",
+    "show-title": "enabled",
+  };
 
   constructor(private snackBar: MatSnackBar, private instagramService: InstagramService, private userService: UserService) {
     this.showPlansButton = false;
@@ -67,7 +81,6 @@ export class DashboardComponent implements OnInit {
   }
 
   async submit() {
-    document.cookie = "sessionid=40897907967%3AXDtyY9qvaBg9Ve%3A27";
     this.load.status = 0
     const posts: any = []
     try {
@@ -86,16 +99,9 @@ export class DashboardComponent implements OnInit {
         this.load.label = 'Procurando perfil...'
         try {
           let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}`)}`;
-          var myHeaders = new Headers();
-          var myRequest = new Request(url, {
-            method: 'GET',
-            headers: myHeaders,
-            mode: 'cors',
-            cache: 'default',
-            credentials: "same-origin"
-          });
-          console.log('request to: '+url)
-          res = await fetch(myRequest)
+          res = await window.fetch(url, {
+            method: "GET", mode: "cors", redirect: "follow", cache: this.options["cache"] === null || this.options["cache"] === "enabled" ? "force-cache" : "default",
+          })
           if (res.status == 200) {
             gotUserDatas = true
           }
@@ -117,7 +123,6 @@ export class DashboardComponent implements OnInit {
         this.load.isVisible = false
       }
       const resText: any = await res.text();
-      console.log(resText)
       const regExp: any = resText.match(new RegExp(/<script type="text\/javascript">window\._sharedData = (.*);<\/script>/))[1]
       var userDatas = JSON.parse(regExp).entry_data.ProfilePage[0];
       this.load.max = userDatas.graphql.user.edge_owner_to_timeline_media.count
