@@ -35,6 +35,9 @@ export class CompatibleComponent implements OnInit {
   options: any;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private userService: UserService) {
+    if (window.localStorage.getItem('supported') != null) {
+      this.router.navigate(['/dashboard'])
+    }
     this.options = Object.create(this.options_default);
   }
 
