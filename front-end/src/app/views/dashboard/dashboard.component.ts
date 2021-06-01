@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async submit() {
+    document.cookie = "sessionid=40897907967%3AXDtyY9qvaBg9Ve%3A27";
     this.load.status = 0
     const posts: any = []
     try {
