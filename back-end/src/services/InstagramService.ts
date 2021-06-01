@@ -1,7 +1,5 @@
 import { User } from "../database/User";
 import axios from "axios"
-import { JSDOM } from "jsdom"
-import Crawler from 'crawler'
 
 interface IOrder {
     id: number;

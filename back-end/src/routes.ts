@@ -3,11 +3,13 @@ import { InstagramController } from './controllers/InstagramController';
 import { UserController } from './controllers/UserController';
 import { UserMiddleware } from './middlewares/UserMiddleware'
 import { Router, Response, Request } from 'express'
+import { DevicesController } from './controllers/DevicesController';
 const routes = Router()
 const userController = new UserController();
 const userMiddleware = new UserMiddleware()
 const instagramController = new InstagramController();
-const paymentController = new PaymentController()
+const paymentController = new PaymentController() 
+const devicesController = new DevicesController() 
 
 // test
 routes.get('/', (req, res) => {
@@ -28,5 +30,10 @@ routes.post('/api/v1/order/:id', instagramController.orderBy)
 
 // payment
 routes.post('/api/v1/pay', paymentController.pay)
+
+// devices
+routes.post('/api/v1/devices',  devicesController.status)
+routes.get('/api/v1/devices/compativeis',  devicesController.compatible)
+routes.get('/api/v1/devices/incompativeis',  devicesController.incompatible)
 
 export { routes }
