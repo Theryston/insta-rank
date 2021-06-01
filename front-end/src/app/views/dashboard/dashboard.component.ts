@@ -141,7 +141,9 @@ export class DashboardComponent implements OnInit {
       let hasNextPage = userDatas.graphql.user.edge_owner_to_timeline_media.page_info.has_next_page
       while (hasNextPage) {
         let postsUrl = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURIComponent(`https://www.instagram.com/graphql/query/?query_hash=02e14f6a7812a876f7d133c9555b1151&variables={"id":"${userId}","first":50,"after":"${endCursor}"`)}}`;
-        const postsRes = await window.fetch(postsUrl);
+        const postsRes = await window.fetch(postsUrl, {
+          method: "GET", mode: "cors", redirect: "follow", cache: this.options["cache"] === null || this.options["cache"] === "enabled" ? "force-cache" : "default",
+        })
         const postsDatas = await postsRes.json()
         postsDatas.data.user.edge_owner_to_timeline_media.edges.forEach((post: any) => {
           this.load.status++
