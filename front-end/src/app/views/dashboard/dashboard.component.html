@@ -19,7 +19,7 @@
         </div>
         <div class="input-basic">
             <p>Apenas:</p>
-            <select (click)="order()" [(ngModel)]="filter.justType" name="justType">
+            <select (change)="order()" [(ngModel)]="filter.justType" name="justType">
                 <option value="all">Todos</option>
                 <option value="images">Imagens</option>
                 <option value="circle">Carrossel</option>
