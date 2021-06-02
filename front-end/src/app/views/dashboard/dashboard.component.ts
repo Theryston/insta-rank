@@ -142,7 +142,17 @@ export class DashboardComponent implements OnInit {
         this.load.status++
         post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
         post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
-        posts.push(post)
+        if (this.filter.justType == 'images' && post.node.__typename == "GraphImage") {
+          posts.push(post)
+        } else if (this.filter.justType == 'circle' && post.node.__typename == "GraphSidecar") {
+          posts.push(post)
+        } else if (this.filter.justType == 'videos' && post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
+          posts.push(post)
+        } else if (this.filter.justType == 'reels' && post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
+          posts.push(post)
+        } else if (this.filter.justType == 'all') {
+          posts.push(post)
+        }
       })
       const userId = userDatas.graphql.user.id
       let endCursor = userDatas.graphql.user.edge_owner_to_timeline_media.page_info.end_cursor
@@ -157,7 +167,17 @@ export class DashboardComponent implements OnInit {
           this.load.status++
           post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
           post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
-          posts.push(post)
+          if (this.filter.justType == 'images' && post.node.__typename == "GraphImage") {
+            posts.push(post)
+          } else if (this.filter.justType == 'circle' && post.node.__typename == "GraphSidecar") {
+            posts.push(post)
+          } else if (this.filter.justType == 'videos' && post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
+            posts.push(post)
+          } else if (this.filter.justType == 'reels' && post.node.__typename == "GraphVideo") {
+            posts.push(post)
+          } else if (this.filter.justType == 'all') {
+            posts.push(post)
+          }
         });
         endCursor = postsDatas.data.user.edge_owner_to_timeline_media.page_info.end_cursor
         hasNextPage = postsDatas.data.user.edge_owner_to_timeline_media.page_info.has_next_page
@@ -187,6 +207,8 @@ export class DashboardComponent implements OnInit {
   }
 
   order(datas: { buy: boolean | undefined; posts: any[] }): void {
+    console.log(datas.posts[0])
+
     if (this.orderBy == 'likes') {
       datas.posts = datas.posts.sort((a: any, b: any) => {
         return b.node.edge_media_preview_like.count - a.node.edge_media_preview_like.count
