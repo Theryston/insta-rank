@@ -12,14 +12,14 @@
     <div class="order-datas">
         <div class="input-basic">
             <p>Ordenar por:</p>
-            <select [(ngModel)]="orderBy" name="orderBy">
+            <select (change)="order()" [(ngModel)]="orderBy" name="orderBy">
                 <option value="likes">Curtidas</option>
                 <option value="comments">Comentários</option>
             </select>
         </div>
         <div class="input-basic">
             <p>Apenas:</p>
-            <select [(ngModel)]="filter.justType" name="justType">
+            <select (click)="order()" [(ngModel)]="filter.justType" name="justType">
                 <option value="all">Todos</option>
                 <option value="images">Imagens</option>
                 <option value="circle">Carrossel</option>
@@ -29,11 +29,11 @@
         </div>
         <div class="input-basic">
             <p>Do dia:</p>
-            <input [(ngModel)]="filter.initDate" type="date">
+            <input (change)="order()" [(ngModel)]="filter.initDate" type="date">
         </div>
         <div class="input-basic">
             <p>Até o dia:</p>
-            <input [(ngModel)]="filter.endDate" type="date">
+            <input (change)="order()" [(ngModel)]="filter.endDate" type="date">
         </div>
     </div>
     <section>

@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
   username: string;
   profile_pic_url: string;
   posts: any[]
+  postsRaw: any[]
   showPlansButton: boolean | undefined;
   load = {
     isVisible: false,
@@ -69,6 +70,7 @@ export class DashboardComponent implements OnInit {
     this.options = Object.create(this.options_default);
     this.showPlansButton = false;
     this.posts = []
+    this.postsRaw = []
     this.orderBy = 'likes'
     this.username = ''
     this.profile_pic_url = 'assets/img/account.jpg'
@@ -88,6 +90,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async submit() {
+    this.postsRaw = []
     this.load.status = 0
     const posts: any = []
     try {
@@ -105,7 +108,6 @@ export class DashboardComponent implements OnInit {
         this.load.max = 100
         this.load.label = 'Procurando perfil...'
         try {
-          console.log(this.options)
           let url = `https://images${~~(Math.random() * 3333)}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=${encodeURI(`https://www.instagram.com/${username}`)}`;
           res = await window.fetch(url, {
             method: "GET", mode: "cors", redirect: "follow", cache: this.options["cache"] === null || this.options["cache"] === "enabled" ? "force-cache" : "default",
@@ -142,17 +144,7 @@ export class DashboardComponent implements OnInit {
         this.load.status++
         post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
         post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
-        if (this.filter.justType == 'images' && post.node.__typename == "GraphImage") {
-          posts.push(post)
-        } else if (this.filter.justType == 'circle' && post.node.__typename == "GraphSidecar") {
-          posts.push(post)
-        } else if (this.filter.justType == 'videos' && post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
-          posts.push(post)
-        } else if (this.filter.justType == 'reels' && post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
-          posts.push(post)
-        } else if (this.filter.justType == 'all') {
-          posts.push(post)
-        }
+        this.postsRaw.push(post)
       })
       const userId = userDatas.graphql.user.id
       let endCursor = userDatas.graphql.user.edge_owner_to_timeline_media.page_info.end_cursor
@@ -167,17 +159,7 @@ export class DashboardComponent implements OnInit {
           this.load.status++
           post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
           post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
-          if (this.filter.justType == 'images' && post.node.__typename == "GraphImage") {
-            posts.push(post)
-          } else if (this.filter.justType == 'circle' && post.node.__typename == "GraphSidecar") {
-            posts.push(post)
-          } else if (this.filter.justType == 'videos' && post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
-            posts.push(post)
-          } else if (this.filter.justType == 'reels' && post.node.__typename == "GraphVideo") {
-            posts.push(post)
-          } else if (this.filter.justType == 'all') {
-            posts.push(post)
-          }
+          this.postsRaw.push(post)
         });
         endCursor = postsDatas.data.user.edge_owner_to_timeline_media.page_info.end_cursor
         hasNextPage = postsDatas.data.user.edge_owner_to_timeline_media.page_info.has_next_page
@@ -188,16 +170,7 @@ export class DashboardComponent implements OnInit {
       }
       const tokenLogin: any = window.localStorage.getItem('token_login')
       const user_local: any = window.localStorage.getItem('user')
-      if (tokenLogin != null) {
-        this.showPlansButton = false
-        const userLocal = JSON.parse(user_local)
-        this.userService.read(userLocal.id).subscribe((userLocalDatas: { user: IUser }) => {
-          this.order({ buy: userLocalDatas.user.buy, posts })
-        })
-      } else {
-        this.showPlansButton = true
-        this.order({ buy: false, posts })
-      }
+      this.order()
       this.load.isVisible = false
     } catch (error) {
       console.log(error)
@@ -206,25 +179,104 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  order(datas: { buy: boolean | undefined; posts: any[] }): void {
-    console.log(datas.posts[0])
-
-    if (this.orderBy == 'likes') {
-      datas.posts = datas.posts.sort((a: any, b: any) => {
-        return b.node.edge_media_preview_like.count - a.node.edge_media_preview_like.count
-      })
-    } else if (this.orderBy == 'comments') {
-      datas.posts = datas.posts.sort((a: any, b: any) => {
-        return b.node.edge_media_to_comment.count - a.node.edge_media_to_comment.count
-      })
+  order(): void {
+    console.log('ok')
+    var datas = {
+      posts: this.postsRaw,
+      buy: true
     }
+    this.showPlansButton = true
+    const user: any = window.localStorage.getItem('user')
+    if (user != null) {
+      const userLocal = JSON.parse(user)
+      this.userService.read(userLocal.id).subscribe((userLocalDatas: { user: IUser }) => {
+        if (userLocalDatas.user.buy !== undefined) {
+          datas.buy = userLocalDatas.user.buy
+          this.showPlansButton = !userLocalDatas.user.buy
 
-    if (!datas.buy) {
-      this.posts = datas.posts.slice(0, 6)
+          if (this.filter.justType == 'images') {
+            datas.posts = datas.posts.filter((post: any) => post.node.__typename == 'GraphImage')
+          } else if (this.filter.justType == 'circle') {
+            datas.posts = datas.posts.filter((post: any) => post.node.__typename == 'GraphSidecar')
+          } else if (this.filter.justType == 'videos') {
+            datas.posts = datas.posts.filter((post: any) => {
+              if (post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
+                return true
+              } else {
+                return false
+              }
+            })
+          } else if (this.filter.justType == 'reels') {
+            datas.posts = datas.posts.filter((post: any) => {
+              if (post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
+                return true
+              } else {
+                return false
+              }
+            })
+          } else if (this.filter.justType == 'all') {
+            datas.posts = datas.posts
+          }
+
+          if (this.orderBy == 'likes') {
+            datas.posts = datas.posts.sort((a: any, b: any) => {
+              return b.node.edge_media_preview_like.count - a.node.edge_media_preview_like.count
+            })
+          } else if (this.orderBy == 'comments') {
+            datas.posts = datas.posts.sort((a: any, b: any) => {
+              return b.node.edge_media_to_comment.count - a.node.edge_media_to_comment.count
+            })
+          }
+
+          if (!datas.buy) {
+            this.posts = datas.posts.slice(0, 6)
+          } else {
+            this.posts = datas.posts
+          }
+        }
+      })
     } else {
-      this.posts = datas.posts
+      if (this.filter.justType == 'images') {
+        datas.posts = datas.posts.filter((post: any) => post.node.__typename == 'GraphImage')
+      } else if (this.filter.justType == 'circle') {
+        datas.posts = datas.posts.filter((post: any) => post.node.__typename == 'GraphSidecar')
+      } else if (this.filter.justType == 'videos') {
+        datas.posts = datas.posts.filter((post: any) => {
+          if (post.node.__typename == "GraphVideo" && post.node.product_type == 'feed') {
+            return true
+          } else {
+            return false
+          }
+        })
+      } else if (this.filter.justType == 'reels') {
+        datas.posts = datas.posts.filter((post: any) => {
+          if (post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
+            return true
+          } else {
+            return false
+          }
+        })
+      } else if (this.filter.justType == 'all') {
+        datas.posts = datas.posts
+      }
+
+      if (this.orderBy == 'likes') {
+        datas.posts = datas.posts.sort((a: any, b: any) => {
+          return b.node.edge_media_preview_like.count - a.node.edge_media_preview_like.count
+        })
+      } else if (this.orderBy == 'comments') {
+        datas.posts = datas.posts.sort((a: any, b: any) => {
+          return b.node.edge_media_to_comment.count - a.node.edge_media_to_comment.count
+        })
+      }
+
+      this.posts = datas.posts.slice(0, 6)
     }
   }
+
+  // showPosts(posts: any, buy: boolean | undefined) {
+  //   this.posts = posts
+  // }
 }
 
 // function I() {
