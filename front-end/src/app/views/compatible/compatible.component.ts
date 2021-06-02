@@ -43,9 +43,9 @@ export class CompatibleComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRouter.queryParams.subscribe(queryParams => {
-      if (window.localStorage.getItem('valid') == null) {
+      if (window.localStorage.getItem('supported') == null) {
         if (!queryParams.status) {
-          this.text = 'Precisamos que você faça o teste de compatibilidade com o seu dispositivo para termos certeza de que o sistema vá funcionar perfeitamente com ele!'
+          this.text = ''
           this.button = true;
         } else {
           this.load.status = Number(queryParams.status)
@@ -58,15 +58,18 @@ export class CompatibleComponent implements OnInit {
               window.fetch('https://instarank-com-br.umbler.net/api/v1/devices?status=2', {
                 method: 'POST'
               })
+              this.userService.showMessage(`Por favo, tente novamente daqui a 5 minutos`)
+              setTimeout(() => {
+                window.location.href = '/compativel'
+              }, 1000)
             } else {
               window.fetch('https://instarank-com-br.umbler.net/api/v1/devices?status=1', {
                 method: 'POST'
               })
+              window.localStorage.setItem('supported', "true")
+              this.userService.showMessage(`Seu dispositivo é compatível com o sistema!`)
+              this.router.navigate(['/dashboard'])
             }
-
-            window.localStorage.setItem('supported', success.toString())
-            this.userService.showMessage(`Seu dispositivo é ${(success / this.load.max) * 100}% compatível com o sistema!`)
-            this.router.navigate(['/dashboard'])
           }
         }
       } else {

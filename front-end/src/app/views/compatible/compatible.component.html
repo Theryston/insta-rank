@@ -1,8 +1,8 @@
 <div class="container">
     <img src="assets/img/logo.png" alt="instagram" class="logo">
     <h1 class="title">Seu dispositivo é compatível?</h1>
-    <p class="description">{{text}}</p>
-    <button (click)="start()" *ngIf="button" class="button-basic">Fazer o teste agora</button>
+    <p class="description">Precisamos que você faça o teste de compatibilidade com o seu dispositivo para termos certeza de que o sistema vá funcionar perfeitamente com ele!</p>
+    <button (click)="start()" class="button-basic">Fazer o teste agora</button>
 </div>
 <div class="load" *ngIf='load.isVisible'>
     <label>{{load.label}}</label>
