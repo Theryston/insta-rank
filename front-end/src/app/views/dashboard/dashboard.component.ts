@@ -34,8 +34,8 @@ interface IUser {
 export class DashboardComponent implements OnInit {
   filter = {
     justType: 'all',
-    initDate: '',
-    endDate: ''
+    initDate: 'dd/mm/aaaa',
+    endDate: 'dd/mm/aaaa'
   }
   orderBy: string;
   username: string;
@@ -142,6 +142,7 @@ export class DashboardComponent implements OnInit {
       this.profile_pic_url = `https://api.allorigins.win/raw?url=${encodeURIComponent(userDatas.graphql.user.profile_pic_url_hd)}`
       userDatas.graphql.user.edge_owner_to_timeline_media.edges.forEach((post: any) => {
         this.load.status++
+        post.date = new Date(1000 * post.node.taken_at_timestamp)
         post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
         post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
         this.postsRaw.push(post)
@@ -157,6 +158,7 @@ export class DashboardComponent implements OnInit {
         const postsDatas = await postsRes.json()
         postsDatas.data.user.edge_owner_to_timeline_media.edges.forEach((post: any) => {
           this.load.status++
+          post.date = new Date(1000 * post.node.taken_at_timestamp)
           post.url = `https://www.instagram.com/p/${post.node.shortcode}/`
           post.node.thumbnail_src = `https://api.allorigins.win/raw?url=${encodeURIComponent(post.node.thumbnail_src)}`
           this.postsRaw.push(post)
@@ -168,8 +170,6 @@ export class DashboardComponent implements OnInit {
         orderby: this.orderBy,
         posts
       }
-      const tokenLogin: any = window.localStorage.getItem('token_login')
-      const user_local: any = window.localStorage.getItem('user')
       this.order()
       this.load.isVisible = false
     } catch (error) {
@@ -188,6 +188,28 @@ export class DashboardComponent implements OnInit {
       posts: this.postsRaw,
       buy: true
     }
+
+    if (this.filter.initDate != 'dd/mm/aaaa') {
+      const initDate = new Date(this.filter.initDate)
+      datas.posts = datas.posts.filter(post => {
+        if (post.date.getTime() > initDate.getTime()) {
+          return true
+        } else {
+          return false
+        }
+      })
+    }
+    if (this.filter.endDate != 'dd/mm/aaaa') {
+      const endDate = new Date(this.filter.endDate)
+      datas.posts = datas.posts.filter(post => {
+        if (post.date.getTime() < endDate.getTime()) {
+          return true
+        } else {
+          return false
+        }
+      })
+    }
+
     this.showPlansButton = true
     const user: any = window.localStorage.getItem('user')
     if (user != null) {
@@ -274,17 +296,23 @@ export class DashboardComponent implements OnInit {
           return b.node.edge_media_to_comment.count - a.node.edge_media_to_comment.count
         })
       }
-
       this.posts = datas.posts.slice(0, 6)
 
       this.load.isVisible = false
     }
   }
-
-  // showPosts(posts: any, buy: boolean | undefined) {
-  //   this.posts = posts
-  // }
 }
+
+// let o = []
+// , i = {}
+// , r = {}
+// , c = 0
+// , n = 0
+// , l = 1
+// , t = 1
+// , d = !1;
+// var a;
+// let u = 0
 
 // function I() {
 //   let a = ""
