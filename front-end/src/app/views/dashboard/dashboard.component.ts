@@ -233,7 +233,7 @@ export class DashboardComponent implements OnInit {
             })
           } else if (this.filter.justType == 'reels') {
             datas.posts = datas.posts.filter((post: any) => {
-              if (post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
+              if (post.node.__typename == "GraphVideo" && post.node.product_type == 'clips') {
                 return true
               } else {
                 return false
@@ -252,7 +252,6 @@ export class DashboardComponent implements OnInit {
               return b.node.edge_media_to_comment.count - a.node.edge_media_to_comment.count
             })
           }
-
           if (!datas.buy) {
             this.posts = datas.posts.slice(0, 6)
           } else {
@@ -277,7 +276,7 @@ export class DashboardComponent implements OnInit {
         })
       } else if (this.filter.justType == 'reels') {
         datas.posts = datas.posts.filter((post: any) => {
-          if (post.node.__typename == "GraphVideo" && post.node.product_type != 'feed') {
+          if (post.node.__typename == "GraphVideo" && post.node.product_type == 'clips') {
             return true
           } else {
             return false
