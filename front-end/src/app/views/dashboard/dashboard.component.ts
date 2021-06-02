@@ -180,7 +180,10 @@ export class DashboardComponent implements OnInit {
   }
 
   order(): void {
-    console.log('ok')
+    this.load.isVisible = true
+    this.load.max = 10
+    this.load.status = 0
+    this.load.label = 'Ordenando...'
     var datas = {
       posts: this.postsRaw,
       buy: true
@@ -233,6 +236,8 @@ export class DashboardComponent implements OnInit {
           } else {
             this.posts = datas.posts
           }
+
+          this.load.isVisible = false
         }
       })
     } else {
@@ -271,6 +276,8 @@ export class DashboardComponent implements OnInit {
       }
 
       this.posts = datas.posts.slice(0, 6)
+
+      this.load.isVisible = false
     }
   }
 
