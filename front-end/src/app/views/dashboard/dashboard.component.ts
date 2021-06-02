@@ -202,7 +202,7 @@ export class DashboardComponent implements OnInit {
     } catch (error) {
       console.log(error)
       this.load.isVisible = false
-      this.showMessage('Houve um erro inesperado! tente novamente')
+      this.showMessage('Houve um erro inesperado! tente novamente daqui a 5 minutos')
     }
   }
 
