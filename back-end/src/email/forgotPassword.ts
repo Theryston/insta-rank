@@ -11,7 +11,7 @@ export class ForgotPasswordMail {
     static async sendEmail(email: string, token: string): Promise<string> {
         try {
             transporter.sendMail({
-                from: `Insta Rank <alvaro@prsacademy.com.br>`,
+                from: `Insta Rank <admin@prsacademy.com.br>`,
                 to: email,
                 subject: "Redefinição de senha",
                 html: await ejs.renderFile(__dirname + '/forgotPassword.ejs', {
