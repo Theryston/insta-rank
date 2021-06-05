@@ -10,7 +10,7 @@ interface IUser {
 export class ForgotPasswordMail {
     static async sendEmail(email: string, token: string): Promise<string> {
         try {
-            transporter.sendMail({
+            await transporter.sendMail({
                 from: `Insta Rank <admin@prsacademy.com.br>`,
                 to: email,
                 subject: "Redefinição de senha",
