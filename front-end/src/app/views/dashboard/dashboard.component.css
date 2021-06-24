@@ -12,7 +12,7 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    top:  0px;
+    top: 0px;
     left: 0px;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
@@ -39,13 +39,15 @@
 }
 
 @keyframes loadKey {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .container .more {
-    height: 20px;
-    min-width: 200px;
-    margin-bottom: 10px;
+    height: 40px;
+    max-width: 200px;
+    margin: 10px;
 }
 
 .plans {
@@ -62,20 +64,23 @@
 
 .container section .box>a:link {
     color: #FFF;
-    text-decoration:none;
-  }
-  .container section .box>a:visited {
-    color: #FFF;
-    text-decoration:none;
-  }
-  .container section .box>a:hover {
+    text-decoration: none;
+}
+
+.container section .box>a:visited {
     color: #FFF;
     text-decoration: none;
-  }
-  .container section .box>a:active {
+}
+
+.container section .box>a:hover {
     color: #FFF;
     text-decoration: none;
-  }
+}
+
+.container section .box>a:active {
+    color: #FFF;
+    text-decoration: none;
+}
 
 .container header {
     width: 80%;
@@ -135,7 +140,7 @@ label {
     position: absolute;
     top: -30%;
     font-weight: 300;
-    left:  10px;
+    left: 10px;
 }
 
 .container section {
@@ -196,7 +201,7 @@ label {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left:  10px;
+    margin-left: 10px;
     font-weight: 600;
 }
 

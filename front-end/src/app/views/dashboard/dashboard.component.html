@@ -2,11 +2,10 @@
     <header>
         <img [src]="profile_pic_url" alt="instagram" class="logo">
         <form (submit)="submit()">
-            <div class="input-basic">
-                <input type="text" autocomplete="off" placeholder="Digite o @ do usuário que você quer ordenar"
-                    [(ngModel)]="username" name="username">
-            </div>
-            <button class="button-basic">Ordenar</button>
+            <!-- <div class="input-basic"> -->
+            <input class="main-input-new" type="text" autocomplete="off" placeholder="Digite o @ do usuário que você quer ordenar" [(ngModel)]="username" name="username">
+            <!-- </div> -->
+            <button style="margin-top: 18px;" class="main-button-new">Ordenar</button>
         </form>
     </header>
     <div class="order-datas">
@@ -46,16 +45,15 @@
                         <p>{{post.node.edge_media_preview_like.count}}</p>
                     </div>
                     <div class="item">
-                        <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários"
-                            class="icon">
+                        <img src="https://image.flaticon.com/icons/png/512/1380/1380338.png" alt="comentários" class="icon">
                         <p>{{post.node.edge_media_to_comment.count}}</p>
                     </div>
                 </div>
             </a>
         </div>
     </section>
-    <a *ngIf="showPlansButton" href="https://instarank.prsacademy.com.br/#planos">
-        <div class="more button-basic">Ver todos posts</div>
+    <a *ngIf="showPlansButton" href="#planos">
+        <button class="more main-button-new">Ver todos posts</button>
     </a>
 </div>
 <div class="load" *ngIf='load.isVisible'>

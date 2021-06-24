@@ -1,27 +1,352 @@
-.container {
+header {
+    background: #0D0D0D;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+header img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+}
+
+header button {
+    margin-right: 15px;
+    width: 80px;
+    height: 30px;
+    background: #F22E62;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+
+#one {
+    margin: 46px;
+    margin-top: 120px;
+}
+
+#one .section-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#one .section-1 img {
+    width: 400px;
+    height: 247.43px;
+}
+
+
+#one .section-1 .text h1 {
+    max-width: 687px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 55px;
+    color: #0D0D0D;
+}
+
+#one .section-1 .text p {
+    max-width: 598px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+#one form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+#one form button {
+    margin-top: 18px;
+}
+
+#two .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#two .info .box {
+    width: 300px;
+    height: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 16px;
+}
+
+#two .info .box img {
+    height: 40px;
+}
+
+#two .info .box .text .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #F22E62;
+}
+
+#two .info .box .text p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000000;
+}
+
+#three .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#three .container .box {
+    width: calc(320px - 30px);
+    height: calc(175px - 30px);
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+}
+
+#three .container .box .user {
+    display: flex;
+    align-items: center;
+}
+
+#three .container .box .user .user-datas {
+    margin-left: 9.51px;
+}
+
+#three .container .box .user .user-datas p {
+    margin: 0px;
+    padding: 0px;
+}
+
+#three .container .box .user .user-datas .name {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: -5px;
+}
+
+#three .container .box .user .user-datas .username {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #AAAAAA;
+    margin-top: -5px;
+}
+
+#three .container .box .user img {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+}
+
+#three .container .box .depo {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    color: #333333;
+}
+
+#planos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#planos .box {
+    margin: 15px;
+    width: 400px;
+    height: 500px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#planos .box .header {
+    width: 100%;
+    height: 120px;
+    background: #555555;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#planos .box .header h1 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+#planos .box .header p {
+    margin: 0px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+#planos .box .active {
+    background: #F22E62;
+}
+
+#planos .box .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#planos .box .body .preco {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #000000;
+    margin-top: 42px;
+    margin-bottom: 42px;
+    display: flex;
+    justify-content: center;
+}
+
+#planos .box .body .bonus {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    width: 100%;
+}
+
+#planos .box .body .bonus hr {
+    width: 100%;
+}
+
+#planos .box .body .bonus .item {
+    display: flex;
+    margin: 13px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#planos .box .body .bonus .item img {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#planos .box .body .bonus .item p {
     text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000000;
 }
 
-.container .logo {
-    width: 100px;
+#planos .box .main-button-new {
+    width: 350px;
+    height: 50px;
+    margin-top: 34px;
+}
+
+footer {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #AAAAAA;
     margin-top: 50px;
 }
 
-.container .title {
-    margin-top: 50px;
-    font-size: var(--e-global-typography-73cdbfe-font-size);
+footer p {
+    margin: 0px;
 }
 
+footer a {
+    color: #333;
+    font-weight: 500;
+}
 
-.container .description {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-family: var(--e-global-typography-primary-font-weight);
+@media screen and (max-device-width: 900px) {
+    #one .section-1 .text h1 {
+        font-size: 1.5em;
+        line-height: normal;
+        max-width: 100%;
+    }
+
+    #one .section-1 .text p {
+        font-size: 1em;
+        line-height: normal;
+        max-width: 100%;
+    }
+
+    #one .section-1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    #one form {
+        margin: 0px;
+        width: 100%;
+    }
+
+    #planos .box {
+        width: 80%;
+    }
+
+    #planos .box .main-button-new {
+        margin-top: 0px;
+        width: 200px;
+    }
 }

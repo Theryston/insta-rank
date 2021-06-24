@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --e-global-color-primary: #E71967;
     --e-global-color-secondary: #54595F;
@@ -20,7 +22,8 @@
 
 
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -28,7 +31,7 @@ body {
     margin: 0;
     font-family: var(--e-global-typography-primary-font-family);
     color: var(--e-global-color-text);
-    background: #FAFAFB;
+    background: #fff;
 }
 
 .button-basic {
@@ -52,8 +55,8 @@ body {
 
 .input-basic {
     background-color: #ffffff;
-    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
-    font-weight: var( --e-global-typography-text-font-weight );
+    font-family: var(--e-global-typography-text-font-family), Sans-serif;
+    font-weight: var(--e-global-typography-text-font-weight);
     width: 80%;
     border: 0.5px #999 solid;
     outline: none;
@@ -68,8 +71,8 @@ body {
 .input-basic input {
     margin-top: auto;
     margin-bottom: auto;
-    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
-    font-weight: var( --e-global-typography-text-font-weight );
+    font-family: var(--e-global-typography-text-font-family), Sans-serif;
+    font-weight: var(--e-global-typography-text-font-weight);
     font-size: 15px;
     border: none;
     outline: none;
@@ -93,8 +96,8 @@ body {
 }
 
 .input-basic select {
-    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
-    font-weight: var( --e-global-typography-text-font-weight );
+    font-family: var(--e-global-typography-text-font-family), Sans-serif;
+    font-weight: var(--e-global-typography-text-font-weight);
     font-size: 15px;
     border: none;
     outline: none;
@@ -126,10 +129,51 @@ body {
     position: absolute;
     top: -20%;
     font-weight: 300;
-    left:  10px;
+    left: 10px;
 }
 
 a:link {
     text-decoration: none;
     color: var(--e-global-color-text);
+}
+
+.main-input-new {
+    width: calc(100% - 22px);
+    height: calc(50px - 22px);
+    background: #F2F2F2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 11px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+    transition: all .5s;
+}
+
+.main-input-new:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.main-button-new {
+    width: 100%;
+    height: 50px;
+    background: #F22E62;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+    transition: all .5s;
+}
+
+.main-button-new:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }

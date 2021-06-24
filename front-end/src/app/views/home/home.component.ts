@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router) {
-    window.location.href = 'https://instarank.prsacademy.com.br';
+    // window.location.href = 'https://instarank.prsacademy.com.br';
   }
 
   ngOnInit(): void { }
