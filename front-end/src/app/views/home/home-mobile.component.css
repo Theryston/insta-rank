@@ -1,0 +1,32 @@
+@media screen and (max-device-width: 900px) {
+    #one .section-1 .text h1 {
+        font-size: 1.5em;
+        line-height: normal;
+        max-width: 100%;
+    }
+
+    #one .section-1 .text p {
+        font-size: 1em;
+        line-height: normal;
+        max-width: 100%;
+    }
+
+    #one .section-1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    #one form {
+        margin: 0px;
+        width: 100%;
+    }
+
+    #planos .box {
+        width: 80%;
+    }
+
+    #planos .box .main-button-new {
+        margin-top: 0px;
+        width: 200px;
+    }
+}
