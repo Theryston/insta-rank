@@ -1,23 +1,27 @@
+<header>
+    <a routerLink="/">
+        <img src="assets/img/logo.png" alt="instarank logo">
+    </a>
+</header>
+
 <div class="container">
+    <div class="text">
+        <h1>Faça login no instarank</h1>
+        <p>Já tem uma conta no instarank? O que acha de se conectar a essa sua conta e ter o acesso completo a essa ferramenta?</p>
+    </div>
     <form (submit)="submit()">
-        <img src="assets/img/logo.png" alt="">
-        <div class="input-basic">
-            <input required placeholder="Digite aqui o  seu email" type="email" name="email" [(ngModel)]="user.email">
-            <p>E-mail</p>
-        </div>
-        <div class="input-basic">
-            <p>Senha</p>
-            <input required placeholder="Digite uma  senha para acessar a ferramenta" type="password" name="password" [(ngModel)]="user.password">
-        </div>
-        <button class="button-basic" type="submit">Conectar</button>
-        <div class="options">
-            <a href="https://instarank.prsacademy.com.br/#planos">
-                <p>Registrar-se</p>
-            </a>
-            <hr>
-            <a routerLink="/password/forgot">
-                <p>Redefinir senha</p>
-            </a>
-        </div>
+        <input type="email" class="main-input-new" [(ngModel)]="user.email" name="email" placeholder="Digite o seu e-mail">
+        <input type="password" class="main-input-new" [(ngModel)]="user.password" name="password" placeholder="Digite o sua senha">
+        <button type="submit" class="main-button-new">Conectar-se</button>
     </form>
 </div>
+
+<footer>
+    <a routerLink="/password/forgot">
+        Redefinir senha
+    </a>
+    <p style="margin-left: 10px; margin-right: 10px;">|</p>
+    <a href="#planos">
+        Registrar-se
+    </a>
+</footer>

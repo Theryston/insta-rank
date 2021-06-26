@@ -32,6 +32,8 @@ body {
     font-family: var(--e-global-typography-primary-font-family);
     color: var(--e-global-color-text);
     background: #fff;
+    background-image: url("./assets/img/bg.png");
+
 }
 
 .button-basic {
