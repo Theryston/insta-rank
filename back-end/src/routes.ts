@@ -24,6 +24,7 @@ routes.delete('/api/v1/user/:id', userMiddleware.auth, userController.delete)
 routes.post('/api/v1/user/auth', userController.auth)
 routes.post('/api/v1/user/password/forgot', userController.forgotPassword)
 routes.post('/api/v1/user/password/reset', userController.resetPassword)
+routes.post('/api/v1/leads', userController.leads)
 
 // instagram
 routes.post('/api/v1/order/:id', instagramController.orderBy)
@@ -35,5 +36,6 @@ routes.post('/api/v1/pay', paymentController.pay)
 routes.post('/api/v1/devices',  devicesController.status)
 routes.get('/api/v1/devices/compativeis',  devicesController.compatible)
 routes.get('/api/v1/devices/incompativeis',  devicesController.incompatible)
+
 
 export { routes }

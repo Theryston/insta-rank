@@ -1,11 +1,11 @@
 import nodemailer from 'nodemailer'
 
 let transporter = nodemailer.createTransport({
-    host: "smtp.hostinger.com",
+    host: "smtp.umbler.com",
     port: 587,
     secure: false,
     auth: {
-      user: "admin@prsacademy.com.br",
+      user: "servicos@instarank.com.br",
       pass: "@Senhagenerica1"
     }
 });

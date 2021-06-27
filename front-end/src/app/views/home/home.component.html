@@ -15,11 +15,9 @@
         </div>
         <img src="assets/img/pc.png" alt="instarank interface">
     </div>
-    <form>
-        <input type="email" required placeholder="Digite o seu e-mail" class="main-input-new">
-        <a routerLink="/dashboard">
-            <button type="submit" class="main-button-new">Começar GRATUITAMENTE</button>
-        </a>
+    <form (submit)="submit()">
+        <input [(ngModel)]="email" name="email" type="email" required placeholder="Digite o seu e-mail" class="main-input-new">
+        <button type="submit" class="main-button-new">Começar GRATUITAMENTE</button>
     </form>
 </section>
 

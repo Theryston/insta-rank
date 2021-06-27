@@ -21,7 +21,7 @@ interface IUser {
 })
 export class UserService {
   baseUrl = 'https://instarank-com-br.umbler.net/api/v1'
-  // baseUrl = 'https://3000-red-orca-d1hbfuab.ws-us08.gitpod.io/api/v1'
+  // baseUrl = 'https://3000-moccasin-koala-k4m3wylv.ws-us09.gitpod.io/api/v1'
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -35,6 +35,13 @@ export class UserService {
 
   register(user: IUser): Observable<{ user: IUser, token: string }> {
     return this.http.post<{ user: IUser, token: string }>(this.baseUrl + '/user', user).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
+  leads(email: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/leads', { email }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     )

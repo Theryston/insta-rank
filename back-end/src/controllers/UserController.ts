@@ -102,4 +102,17 @@ export class UserController {
       })
     }
   }
+
+  async leads(req: Request, res: Response) {
+    try {
+      const email = req.body.email
+      const userService = new UserService()
+      await userService.leads(email)
+      res.json({ message: 'Parabéns, agora você ja tem o acesso gratuito.' })
+    } catch (error) {
+      res.status(500).json({
+        message: error.message
+      })
+    }
+  }
 }

@@ -1,9 +1,11 @@
 import { ForgotPasswordMail } from './../email/forgotPassword';
 import { User } from '../database/User';
+import { Leads } from '../database/Leads';
 import { Token } from '../database/Token';
 import bcrypt from 'bcryptjs';
 import util from 'util';
 import jwt from 'jsonwebtoken';
+import { Model } from 'sequelize/types';
 const jwtSign = util.promisify(jwt.sign)
 
 const jwtSecret = 'kwksjdbdbdjwkajdhsjam'
@@ -96,6 +98,15 @@ class UserService {
             return 'ok'
         } catch (error) {
             throw error
+        }
+    }
+
+    async leads(email: string) {
+        const user: Model<IUser> = await User.findOne<Model<IUser>>({ where: { email } })
+        if (user) throw new Error('Esse usuário já foi cadastrado. faça login')
+        const leads = await Leads.findOne({ where: { email } })
+        if (!leads) {
+            await Leads.create({ email })
         }
     }
 
