@@ -14,7 +14,8 @@ import { AuthInstagramComponent } from './views/auth-instagram/auth-instagram.co
 import { PlanosComponent } from './views/planos/planos.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
-import { CompatibleComponent } from './views/compatible/compatible.component'
+import { CompatibleComponent } from './views/compatible/compatible.component';
+import { LoadComponent } from './components/load/load.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CompatibleComponent } from './views/compatible/compatible.component'
     PlanosComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    CompatibleComponent
+    CompatibleComponent,
+    LoadComponent
   ],
   imports: [
     BrowserModule,

@@ -8,42 +8,6 @@
     width: 100%;
 }
 
-.load {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    flex-direction: column;
-}
-
-.load .circle {
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-    border: 2px solid #FFF;
-    border-left-color: var(--e-global-color-primary);
-    animation: loadKey 1s linear infinite;
-}
-
-#percent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes loadKey {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .container .more {
     height: 40px;
     max-width: 200px;
